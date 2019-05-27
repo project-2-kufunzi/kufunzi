@@ -5,4 +5,44 @@ body {
 a {
   color: #00B7FF; }
 
+label {
+  font-weight: bold;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  margin-top: 10px; }
+
+input,
+textarea {
+  display: inline-block;
+  width: 100%; }
+
+input:focus,
+textarea:focus {
+  /* sizes for the 2 images (focus state) */
+  background-size: 100% 2px, 100% 1px;
+  outline: none; }
+
+.exercises a {
+  padding: 3px;
+  background-color: green; }
+
+.exercises li {
+  color: green;
+  font-weight: bold;
+  list-style-type: none; }
+
+.results {
+  padding-left: 10px;
+  position: absolute;
+  z-index: 39;
+  color: blue;
+  border: 1px solid grey;
+  width: 80%;
+  background-color: white; }
+
+.results li {
+  display: inline-block;
+  width: 100%; }
+
 /*# sourceMappingURL=style.css.map */

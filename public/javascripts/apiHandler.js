@@ -15,19 +15,19 @@ class wgesAPI {
     return this.api.get(`exercise/search?term=${term}`)
   }
 
-  /*   getOneRegister(id) {
+  getExerciseDetail(id) {
+    return this.api.get(`exerciseinfo/${id}`)
+  }
 
-    }
+  // createOneRegister(data) {
 
-    createOneRegister(data) {
+  // }
 
-    }
+  // updateOneRegister(id) {
 
-    updateOneRegister(id) {
+  // }
 
-    }
+  // deleteOneRegister(id) {
 
-    deleteOneRegister(id) {
-
-    } */
+  // } 
 }

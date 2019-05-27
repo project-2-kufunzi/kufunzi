@@ -1,68 +1,93 @@
-<h2>Add new workout</h2>
+<h2>Nuevo workout</h2>
 
-<form>
-  <div class="form-group row">
-  <label for="date">Date:</label>
-    <input type="datetime-local" name="date" id="date"><br>
-  </div>
-  <div class="form-group row">
-  <label for="address"><strong>Lugar del entrenamiento</strong></label>
-      <input type="text" name="address" id="address">
-  </div>
-  <div class="form-group row">
-  <label for="client"><strong>Cliente:</strong></label>
-      <input type="text" name="client" id="address">
+
+
+<form class="workout" method="POST" action="/workouts/new">
+
+  <div class="row">
+    <label for="date">Fecha y hora:</label>
+    <input class="mdc-text-field__input" type="datetime-local" name="date" id="date">
   </div>
 
- <div class="form-group row">
+  <div class="row">
+    <label for="address"><strong>Lugar del entrenamiento</strong></label>
+    <input class="mdc-text-field__input" type="text" name="address" id="address">
+  </div>
+  <div class="row">
+    <label for="client"><strong>Cliente:</strong></label>
+    <input class="mdc-text-field__input" type="text" name="client" id="client">
+  </div>
+  <div class="phases">
+    <!-- Calentamiento -->
+    <section class="warmup">
       <label for="warmup">Calentamiento:</label>
-        <input type="hidden" name="phase-name" value="Calentamiento">
-        <textarea type="text" name="warmup-description"></textarea>
-    </div>
-
-  <div class="form-group row">
-    <p>Parte principal:</p>
-    <input type="hidden" name="phase-name" value="Principal">
-    <strong>Bloque</strong>
-      <label for="order">Orden </label>
-        <input type="number" name="order">
-      <label for="order">Description </label>
-        <textarea type="text" name="description"></textarea>
-       <label for="mode">Mode </label>
-        <select name="mode">
-          <option value="Rondas"> Rondas</option>
-          <option value="Tiempo"> Tiempo</option>
-        </select>
-        {{!-- <input type="text" value=""> Falta cuantas rondas o cuanto tiempo--}} 
-        <label for="type">Tipo </label>
-        <select name="type">
-          <option value="Presencial"> Presencial</option>
-          <option value="Online"> Online</option>
-        </select>
-
-        <label for="exercises">¿Qué ejercicios quieres añadir?</label>
-        <input type="text" name="search-exercise" id="search">
-        <div id="wger-results">
-          <p id="exercise-name"></p>
-          <a id="exercise-detail" href="">Ver detalle</a>
+      <input type="hidden" name="phase-name" value="Calentamiento">
+      <textarea class="mdc-text-field__input" type="text" name="warmup"></textarea>
+    </section>
+    <!-- Principal -->
+    <section class="main">
+      <div class="col-md-12">
+        <label>Parte principal:</label>
+        <input type="hidden" name="phase-name" value="Principal">
+        <a>Añadir Bloque</a>
+      </div>
+      <section class="block">
+        <div class="col-md-12">
+          <label for="order">Orden </label>
+          <input type="number" name="order">
         </div>
-  
-    </div>
+        <div class="col-md-12">
+          <label for="order">Description </label>
+          <textarea type="text" name="description"></textarea>
+        </div>
+        <div class="col-md-12">
+          <label for="mode">Mode </label>
+          <select name="mode">
+            <option value="Rondas"> Rondas</option>
+            <option value="Tiempo"> Tiempo</option>
+          </select>
+          <input type="Number">
+        </div>
+        <div class="col-md-12">
+          <label for="type">Tipo </label>
+          <select name="type">
+            <option value="Presencial"> Presencial</option>
+            <option value="Online"> Online</option>
+          </select>
+        </div>
+        <article>
+          <label for="exercises">Ejercicios</label>
+          <div class="row">
+            <ul class="exercises"></ul>
+          </div>
+          <input class="text" type="text" name="search-exercise" id="search">
+          <div class="results"></div>
+        </article>
 
+      </section>
 
-  <button type="submit" id="add-new">Añadir</button>
+    </section>
+    <!-- Estiramientos -->
+    <section class="stretch">
+      <label for="stretch">Estiramientos:</label>
+      <input type="hidden" name="phase-name" value="Estiramiento">
+      <textarea class="mdc-text-field__input" type="text" name="stretch"></textarea>
+    </section>
+  </div>
+
+  <button class="foo-button mdc-button" type="submit" id="add-new">Añadir</button>
 </form>
 
 
 
-
- <script type="text/javascript" src="javascript/apiHandler.js"></script>
-  <script type="text/javascript" src="javascript/workout-creator.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript" src="../../../javascripts/apiHandler.js"></script>
+<script type="text/javascript" src="../../../javascripts/workout-creator.js"></script>
 
 
 {{!--  <script 
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_9UjX2_EU-YgI1M_d9DQrmeYAXKKlG-s">
     </script> --}}
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 {{!-- <script type="text/javascript" src="/javascripts/locatePlaces.js"></script> --}}
