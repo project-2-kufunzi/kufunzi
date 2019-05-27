@@ -1,7 +1,7 @@
 const express = require("express");
 const passport = require('passport');
 const router = express.Router();
-const User = require("../models/User");
+const User = require("../models/User.model");
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -16,54 +16,48 @@ router.get("/login", (req, res, next) => {
 
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/",
-  failureRedirect: "/auth/login",
+  failureRedirect: "auth/login",
   failureFlash: true,
   passReqToCallback: true
 }));
 
 router.get("/signup", (req, res, next) => {
-  res.render("auth/signup");
+  res.render("auth/signup", {
+    message: req.flash("error") //es lo mismo que si le paso solo msg.message
+  });
 });
 
 router.post("/signup", (req, res, next) => {
-  const username = req.body.username;
+  const email = req.body.email;
   const password = req.body.password;
-  if (username === "" || password === "") {
-    res.render("auth/signup", {
-      message: "Indicate username and password"
-    });
-    return;
-  }
+  const name = req.body.name;
+  const phone = req.body.phone;
 
-  User.findOne({
-    username
-  }, "username", (err, user) => {
-    if (user !== null) {
-      res.render("auth/signup", {
-        message: "The username already exists"
-      });
-      return;
+  passport.authenticate("local-signup", (err, user, msg) => {
+    //Primer parámetro:  que LocalStrategy queremos utilizar? --> "local-signup"
+    //Segundo parametro: es lo que pasamos en done
+
+    if (err) {
+      next(err) //se pasa a www, linea 13.
+      return
+    }
+    if (!user) {
+      req.flash("error", msg.message) //Configura flash par poder mostrar el error
+      res.redirect("/auth/signup")
     }
 
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashPass = bcrypt.hashSync(password, salt);
+    req.login(user, err => { //viene de pasport, nosotros le pasamos el usuario y hace el login
+      if (err) {
+        next(err)
+        return
+      } else {
+        res.redirect("/") //sesion iniciada
+      }
+    })
+  })(req, res, next) //porque authenticate devuelve una funcion que tenemos que ejecutar
 
-    const newUser = new User({
-      username,
-      password: hashPass
-    });
-
-    newUser.save()
-      .then(() => {
-        res.redirect("/");
-      })
-      .catch(err => {
-        res.render("auth/signup", {
-          message: "Something went wrong"
-        });
-      })
-  });
 });
+
 
 router.get("/logout", (req, res) => {
   req.logout();

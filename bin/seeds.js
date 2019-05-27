@@ -5,12 +5,14 @@
 
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const User = require("../models/User");
+const User = require("../models/User.model");
 
 const bcryptSalt = 10;
 
 mongoose
-  .connect('mongodb://localhost/kufunzi', {useNewUrlParser: true})
+  .connect('mongodb://localhost/kufunzi', {
+    useNewUrlParser: true
+  })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -18,8 +20,7 @@ mongoose
     console.error('Error connecting to mongo', err)
   });
 
-let users = [
-  {
+let users = [{
     username: "alice",
     password: bcrypt.hashSync("alice", bcrypt.genSaltSync(bcryptSalt)),
   },
@@ -30,18 +31,18 @@ let users = [
 ]
 
 User.deleteMany()
-.then(() => {
-  return User.create(users)
-})
-.then(usersCreated => {
-  console.log(`${usersCreated.length} users created with the following id:`);
-  console.log(usersCreated.map(u => u._id));
-})
-.then(() => {
-  // Close properly the connection to Mongoose
-  mongoose.disconnect()
-})
-.catch(err => {
-  mongoose.disconnect()
-  throw err
-})
+  .then(() => {
+    return User.create(users)
+  })
+  .then(usersCreated => {
+    console.log(`${usersCreated.length} users created with the following id:`);
+    console.log(usersCreated.map(u => u._id));
+  })
+  .then(() => {
+    // Close properly the connection to Mongoose
+    mongoose.disconnect()
+  })
+  .catch(err => {
+    mongoose.disconnect()
+    throw err
+  })
