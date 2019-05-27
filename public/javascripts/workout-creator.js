@@ -119,7 +119,8 @@ const saveBlock = (exercises) => {
     type: blockData[4].value,
     exercises
   }
-  console.log(block)
+  blocks.push(block)
+  console.log(blocks)
 }
 
 
@@ -195,7 +196,21 @@ window.onload = () => {
         }
       },
       cliente: document.getElementById('client').value,
-      phases
+      phases: [{
+          name: 'Calentamiento',
+          description: document.getElementById('todo')
+        },
+        {
+          name: 'Estiramientos',
+          description: document.getElementById('todo')
+        },
+        {
+          name: 'Principal',
+          description: document.getElementById('todo'),
+          blocks
+        },
+
+      ]
     }
   }
 
