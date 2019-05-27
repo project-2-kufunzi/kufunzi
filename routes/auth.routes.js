@@ -28,10 +28,6 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", (req, res, next) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  const name = req.body.name;
-  const phone = req.body.phone;
 
   passport.authenticate("local-signup", (err, user, msg) => {
     //Primer parámetro:  que LocalStrategy queremos utilizar? --> "local-signup"

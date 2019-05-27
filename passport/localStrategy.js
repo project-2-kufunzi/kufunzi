@@ -2,7 +2,6 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User.model');
 const bcrypt = require('bcrypt');
-<<<<<<< HEAD
 const bcryptSalt = 10;
 
 passport.use(new LocalStrategy({
@@ -13,21 +12,10 @@ passport.use(new LocalStrategy({
   (req, email, password, done) => {
     User.findOne({
         email
-=======
-
-passport.use(new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'password'
-  },
-  (username, password, done) => {
-    User.findOne({
-        username
->>>>>>> leti
       })
       .then(foundUser => {
         if (!foundUser) {
           done(null, false, {
-<<<<<<< HEAD
             message: 'Incorrect email'
           });
           return;
@@ -93,22 +81,3 @@ passport.use("local-signup", new LocalStrategy({ //cuando en el signup queramos 
       })
   }
 ))
-=======
-            message: 'Incorrect username'
-          });
-          return;
-        }
-
-        if (!bcrypt.compareSync(password, foundUser.password)) {
-          done(null, false, {
-            message: 'Incorrect password'
-          });
-          return;
-        }
-
-        done(null, foundUser);
-      })
-      .catch(err => done(err));
-  }
-));
->>>>>>> leti
