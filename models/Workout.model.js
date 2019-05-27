@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const exerciseSchema = require('../models/schema/exercise.schema')
+
 
 const workoutSchema = new Schema({
   date: Date,
@@ -29,10 +31,14 @@ const workoutSchema = new Schema({
         type: String,
         enum: ['Presencial', 'Online']
       },
-      exercises: []
+      exercises: [exerciseSchema]
     }]
   }],
-  clients: [String]
+  clients: [String],
+  trainerId: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -40,5 +46,5 @@ const workoutSchema = new Schema({
   }
 });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+
+module.exports = mongoose.model('Workout', workoutSchema);
