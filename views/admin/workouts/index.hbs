@@ -1,0 +1,15 @@
+{{#each workouts}}
+<li>
+   <p> Fecha {{date}}</p> 
+   <p> Dirección: {{address.name}}</p> 
+  {{#each phases}}
+  <p><strong> {{name}}</strong></p> 
+     <p>  {{description}}  </p> 
+     {{#each blocks}}
+        <p> Description: {{description}} </p> 
+        <p> Tipo: {{type}} </p> 
+       <p> Modo: {{mode}} </p> 
+     {{/each}}
+  {{/each}}
+</li>
+{{/each}}

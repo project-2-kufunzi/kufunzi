@@ -87,11 +87,11 @@ app.use('/', index);
 const authRoutes = require('./routes/auth.routes');
 app.use('/auth', authRoutes);
 
-const trainerRoutes = require('./routes/trainer/trainer.routes');
-app.use('/trainer', trainerRoutes);
+/* const trainerRoutes = require('./routes/trainer/trainer.routes');
+app.use('/trainer', trainerRoutes) */
 
-const clientRoutes = require('./routes/client/client.routes');
-app.use('/client', clientRoutes);
+const adminRoutes = require('./routes/admin/admin.routes');
+app.use('/', adminRoutes);
 
 
 module.exports = app;
