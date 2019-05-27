@@ -24,8 +24,11 @@ const workoutSchema = new Schema({
       order: Number,
       description: String,
       mode: {
-        type: String,
-        enum: ['Rondas', 'Tiempo']
+        name: {
+          type: String,
+          enum: ['Rondas', 'Tiempo']
+        },
+        qty: Number
       },
       type: {
         type: String,

@@ -23,6 +23,18 @@ textarea:focus {
   background-size: 100% 2px, 100% 1px;
   outline: none; }
 
+.main a {
+  padding: 10px 30px;
+  margin-top: 42px;
+  background: blue;
+  color: white; }
+
+.main .save {
+  background: green; }
+
+.hide {
+  display: none; }
+
 .exercises a {
   padding: 3px;
   background-color: green; }
