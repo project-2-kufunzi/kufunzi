@@ -1,1 +1,1 @@
-# kufunzi
+# Kufunzi APP
