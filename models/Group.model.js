@@ -1,26 +1,25 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-  email: String,
-  password: String,
+const groupSchema = new Schema({
   name: String,
-  phone: String,
-  role: {
-    type: String,
-    enum: ["trainer", "admin"],
-    default: "trainer"
+  address: {
+    name: String,
+    location: {
+      type: {
+        type: String
+      },
+      coordinates: [Number]
+    }
   },
-  workouts: [{
-    type: Schema.Types.ObjectId,
-    ref: "Workout"
-  }],
-  trainers: [{
+  capacity: Number,
+  workouts: [], //será array de id de los workouts
+  clients: [{
     type: Schema.Types.ObjectId,
     ref: "User"
   }],
   isTrainer: Boolean,
-  isAdmin: Boolean
+  isClient: Boolean
 }, {
   timestamps: {
     createdAt: 'created_at',
