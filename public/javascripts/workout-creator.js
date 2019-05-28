@@ -1,5 +1,5 @@
 const api = new wgesAPI()
-
+let address
 const initMap = () => {
   //console.log('entreo initmap')
   mapboxgl.accessToken = 'pk.eyJ1IjoiZ3J1YXN0ZW8iLCJhIjoiY2p3N2lpOXc2MW1lbDQ0cXJmOHRzOWdlMyJ9.-x-wZ4ZJ4Bq7u5dEyaahNg';
@@ -20,11 +20,16 @@ const initMap = () => {
     }
   });
 
-  console.log(geocoder.features)
-
   document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
-
+  geocoder.on('result', result => {
+    console.log(result)
+    address = {
+      name: result.result.place_name,
+      location: result.result.geometry
+    }
+    console.log(address)
+  })
 
 }
 
@@ -227,39 +232,37 @@ window.onload = () => {
   workoutform.onsubmit = (e) => {
     e.preventDefault()
   }
+
+  console.log(address)
+
   saveWorkout.onclick = () => {
     const workoutData = [...document.querySelectorAll('[workout="save"]')]
     console.log(workoutData)
-    //e.preventDefault()
+
+
     const workout = {
       date: workoutData[0].value,
-      address: {
-        name: workoutData[1].value,
-        location: {
-          type: 'Point',
-          coordinates: [45.64, 32.34] //falta hacer geocode con maps
-        }
-      },
-      cliente: workoutData[2].value,
-      type: workoutData[3].value,
+      address,
+      cliente: workoutData[1].value,
+      type: workoutData[2].value,
       phases: [{ //calentamiento
-          name: workoutData[4].value,
-          description: workoutData[5].value
+          name: workoutData[3].value,
+          description: workoutData[4].value
         },
         { //principal
-          name: workoutData[6].value,
+          name: workoutData[5].value,
           //description: workoutData[7].value,
           blocks
         },
         { //estiramients
-          name: workoutData[7].value,
-          description: workoutData[8].value
+          name: workoutData[6].value,
+          description: workoutData[7].value
         },
       ]
     }
     console.log(workout)
     axios.post('/workouts', workout)
-      .then(x => window.location.pathname = '/workouts')
+      .then(x => console.log(x)) //window.location.pathname = '/workouts'
       .catch(err => console.err(err))
 
   }
