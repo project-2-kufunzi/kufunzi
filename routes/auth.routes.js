@@ -16,7 +16,7 @@ router.get("/login", (req, res, next) => {
 
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/",
-  failureRedirect: "auth/login",
+  failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
 }));
@@ -53,6 +53,8 @@ router.post("/signup", (req, res, next) => {
   })(req, res, next) //porque authenticate devuelve una funcion que tenemos que ejecutar
 
 });
+
+
 
 
 router.get("/logout", (req, res) => {
