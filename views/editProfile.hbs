@@ -1,0 +1,19 @@
+{{#with user}}
+<h2>Editing your profile</h2>
+
+<form action="editProfile" method="post" enctype="multipart/form-data">
+
+  <label for="name">Nombre:</label>
+  <input type="text" name="name" value="{{name}}">
+  <br>
+  <label for="phone">Teléfono:</label>
+  <input type="text" name="phone" value="{{phone}}">
+  <br>
+  <label for="photo">Sube tu foto de perfil:</label>
+  <input type="file" name="photo">
+
+
+  <button type="submit" id="edit">Save details</button>
+
+</form>
+{{/with}}
