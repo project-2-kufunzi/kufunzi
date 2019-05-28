@@ -20,6 +20,10 @@ const workoutSchema = new Schema({
       enum: ['Calentamiento', 'Principal', 'Estiramientos']
     },
     description: String,
+    type: {
+      type: String,
+      enum: ['Presencial', 'Online']
+    },
     blocks: [{
       order: Number,
       description: String,
@@ -29,10 +33,6 @@ const workoutSchema = new Schema({
           enum: ['Rondas', 'Tiempo']
         },
         qty: Number
-      },
-      type: {
-        type: String,
-        enum: ['Presencial', 'Online']
       },
       exercises: [exerciseSchema]
     }]

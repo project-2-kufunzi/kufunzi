@@ -20,22 +20,11 @@ router.get('/new', (req, res, next) => {
   res.render('admin/workouts/new')
 
 });
-router.post('/', (req, res, next) => {
-  const {
-    date,
-    address,
-    phases,
-    clients
-  } = req.body
 
-  //console.log(req.body)
-  const newWorkout = new Workout({
-    date,
-    address,
-    phases,
-    clients,
-    //trainerId: req.user._id
-  })
+
+router.post('/', (req, res, next) => {
+  console.log(req.body)
+  const newWorkout = new Workout(req.workout)
   newWorkout.save()
     .then(
       workout => {

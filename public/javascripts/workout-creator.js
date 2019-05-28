@@ -1,10 +1,37 @@
 const api = new wgesAPI()
 
+const initMap = () => {
+  //console.log('entreo initmap')
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZ3J1YXN0ZW8iLCJhIjoiY2p3N2lpOXc2MW1lbDQ0cXJmOHRzOWdlMyJ9.-x-wZ4ZJ4Bq7u5dEyaahNg';
 
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-79.4512, 43.6568],
+    zoom: 13
+  });
+  //console.log('initmap map', map)
+  const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl,
+    placeholder: 'Lugar de entrenamiento',
+    marker: {
+      color: 'orange'
+    }
+  });
+
+  console.log(geocoder.features)
+
+  document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+
+
+}
 
 let selects = document.querySelectorAll('select')
 const workoutform = document.querySelector('form')
-const addBlockButton = document.querySelector('#add-block')
+let addBlockButton = document.querySelector('#add-block')
+const saveWorkout = document.querySelector('#add-workout')
 
 const blocks = []
 
@@ -16,41 +43,35 @@ const getPhases = () => {
 const addBlock = (e) => {
   //console.log(e.target)
   e.target.classList = 'hide'
-  const block = `<div class="col-md-12">
-  <a class="save" name="save-block">Guardar bloque</a> 
-                    <label for="order">Orden </label>
-                    <input type="number" name="order" save="true">
+  const block = `<a class="save chip-button" name="save-block">Guardar bloque</a> 
+                  <div class="col-md-6">
+                    <label class="w40" for="order">Orden </label>
+                    <input class="w40"  type="number" name="order" save="true">
                   </div>
+                  <div class="col-md-12">
+                  <label for="mode">Mode </label>
+                  <select name="mode" save="true">
+                    <option value="Rondas"> Rondas</option>
+                    <option value="Tiempo"> Tiempo</option>
+                  </select>
+                  <input type="Number" save="true" name="round-qty" placeholder="Cantidad">
+                </div>
                   <div class="col-md-12">
                     <label for="order">Description </label>
                     <textarea type="text" name="description" save="true"></textarea>
                   </div>
-                  <div class="col-md-12">
-                    <label for="mode">Mode </label>
-                    <select name="mode" save="true">
-                      <option value="Rondas"> Rondas</option>
-                      <option value="Tiempo"> Tiempo</option>
-                    </select>
-                    <input type="Number" save="true" name="round-qty" >
-                  </div>
-                  <div class="col-md-12">
-                    <label for="type">Tipo </label>
-                    <select name="type" save="true">
-                      <option value="Presencial"> Presencial</option>
-                      <option value="Online"> Online</option>
-                    </select>
-                  </div>
+                 
                   <article>
                     <label for="exercises">Ejercicios</label>
                     <div class="row">
                       <ul class="exercises"></ul>
                     </div>
-                    <input class="search-exercise" type="text" name="search-exercise">
+                    <input class="search-exercise" type="search" name="search-exercise">
                     <div class="results"></div>
                     
                   </article>`
 
-  const newBlock = document.querySelector('.phases').children[1].appendChild(document.createElement('section'))
+  const newBlock = document.querySelector('.phases').children[2].appendChild(document.createElement('section'))
   newBlock.classList = 'block'
   newBlock.innerHTML = block
   //console.dir(newBlock)
@@ -82,7 +103,11 @@ const addBlock = (e) => {
             newElement.innerText = suggestion.data.name
             newElement.classList = 'added'
 
-            newElement.onclick = () => addExercise(suggestion.data.id, exerciseDiv, exercises)
+            newElement.onclick = () => {
+              searchInput.value = '';
+              [...resultsDiv.children].forEach(child => resultsDiv.removeChild(child))
+              addExercise(suggestion.data.id, exerciseDiv, exercises)
+            }
           })
           //console.log(results.children)
         })
@@ -97,30 +122,41 @@ const addBlock = (e) => {
     //   console.log('Introduce ejercicios')
     //   return
     // }
-    saveBlock(exercises)
+    saveBlock(exercises, newBlock)
   }
 
 
 
 }
 
-const saveBlock = (exercises) => {
+const saveBlock = (exercises, section) => {
   //recoger datos del form y crear el bloque
   const blockData = [...document.querySelectorAll('[save="true"]')]
   console.log('blockData querySelector', blockData)
 
   const block = {
     order: blockData[0].value,
-    description: blockData[1].value,
+    description: blockData[3].value,
     mode: {
-      name: blockData[2].value,
-      qty: blockData[3].value
+      name: blockData[1].value,
+      qty: blockData[2].value
     },
-    type: blockData[4].value,
     exercises
   }
+  if (!block.order || !block.mode.qty) {
+    console.log('Completa todos los campos')
+    document.querySelector('#error').innerText = "Completa todos los campos"
+    document.querySelector('#error').classList.toggle('reveal')
+    return
+  }
   blocks.push(block)
-  console.log(blocks)
+  section.innerHTML = `  <p class="added"><strong>${block.order}.-</strong>  ${block.mode.qty} ${block.mode.name}  </p>
+  `
+
+  addBlockButton.classList.toggle('hide')
+  addBlockButton.classList = 'chip-button'
+
+  console.log('Bloques', blocks)
 }
 
 
@@ -137,20 +173,22 @@ const addExercise = (id, exerciseDiv, exercises) => {
       const newElement = exerciseDiv.appendChild(document.createElement('div'))
       newElement.innerHTML = `
         <p><strong>${detail.data.name}</strong></p>
-          <label for="type">Tipo </label>
-            <select name="type">
+          <label class="w40" for="type">Tipo </label>
+            <select class="w40" name="type">
               <option value="Reps"> Reps</option>
               <option value="Time"> Time</option>
             </select>
-            <select name="measure">
+            <label class="w40" for="measure">Unidad </label>
+            <select class="w40" name="measure">
+            <option value="reps"> reps</option>
               <option value="segs"> segs</option>
               <option value="min"> min</option>
-              <option value="reps"> reps</option>
             </select>
-            <input type="number" id="qty">
-            <label for="type">Carga </label>
-            <input type="number" id="weight">
-            <a name="save-exercise">Añadir</a> `
+            <label class="w40" for="qty">Número </label>
+              <input class="w40" type="number"  id="qty" name="qty">
+            <label class="w40" for="type">Carga </label>
+              <input class="w40" type="number" id="weight" placeholder="kg.">
+            <a class="chip-button" name="save-exercise">Añadir</a> `
       selects = document.querySelectorAll('select')
 
       document.getElementsByName('save-exercise').forEach(exerc => {
@@ -164,18 +202,21 @@ const addExercise = (id, exerciseDiv, exercises) => {
               weight: document.getElementById('weight').value
             }
           }
+          newElement.innerHTML = `<p class="added"><strong>${detail.data.name}</strong>  ${exercise.params.qty}  ${exercise.params.measure}</p>
+          `
+          //puedo saber el indice?
           exercises.push(exercise)
+          console.log('Guardado!', exercises)
+
           console.log(newElement)
           //newElement.innerHTML = `<p><strong>${detail.data.name}</strong></p>`
-          console.log('Guardado!', exercises)
         }
       })
 
     })
 }
-
 window.onload = () => {
-
+  initMap()
   addBlockButton.onclick = e => {
     console.log(e)
     addBlock(e)
@@ -183,35 +224,44 @@ window.onload = () => {
 
   let phases;
 
-  workoutform.onsubmit = () => {
-
+  workoutform.onsubmit = (e) => {
     e.preventDefault()
+  }
+  saveWorkout.onclick = () => {
+    const workoutData = [...document.querySelectorAll('[workout="save"]')]
+    console.log(workoutData)
+    //e.preventDefault()
     const workout = {
-      date: document.getElementById('date').value,
+      date: workoutData[0].value,
       address: {
-        name: document.getElementById('address').value,
+        name: workoutData[1].value,
         location: {
           type: 'Point',
           coordinates: [45.64, 32.34] //falta hacer geocode con maps
         }
       },
-      cliente: document.getElementById('client').value,
-      phases: [{
-          name: 'Calentamiento',
-          description: document.getElementById('todo')
+      cliente: workoutData[2].value,
+      type: workoutData[3].value,
+      phases: [{ //calentamiento
+          name: workoutData[4].value,
+          description: workoutData[5].value
         },
-        {
-          name: 'Estiramientos',
-          description: document.getElementById('todo')
-        },
-        {
-          name: 'Principal',
-          description: document.getElementById('todo'),
+        { //principal
+          name: workoutData[6].value,
+          //description: workoutData[7].value,
           blocks
         },
-
+        { //estiramients
+          name: workoutData[7].value,
+          description: workoutData[8].value
+        },
       ]
     }
+    console.log(workout)
+    axios.post('/workouts', workout)
+      .then(x => window.location.pathname = '/workouts')
+      .catch(err => console.err(err))
+
   }
 
 
