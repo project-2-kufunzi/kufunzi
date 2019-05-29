@@ -14,6 +14,11 @@ h2 {
   font-size: 23px;
   line-height: 23px; }
 
+.primary-text {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 1.1em; }
+
 .d-flex {
   display: flex; }
 
@@ -29,11 +34,14 @@ a {
 /* New workout */
 form .row,
 form section {
-  padding: 10px 30px; }
+  padding: 10px 30px;
+  padding-bottom: 60px; }
 
 .workout {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  padding-top: 15px;
+  padding-bottom: 125px; }
 
 label {
   font-family: 'Montserrat';
@@ -152,6 +160,11 @@ input[type=number]::-webkit-inner-spin-button {
   width: 100%;
   position: absolute; }
 
+#workout {
+  padding-top: 30px;
+  height: 100vh;
+  width: 100%; }
+
 /* .suggestions-wrapper a {
   color:
 } */
@@ -203,10 +216,10 @@ img {
 footer {
   background: white;
   width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0; }
 
-ul {
+footer ul {
   display: flex;
   padding-left: 0;
   justify-content: space-between;
@@ -226,6 +239,9 @@ footer svg {
   z-index: 10;
   fill: black; }
 
+footer a {
+  text-decoration: none; }
+
 .icon {
   width: 25px;
   height: 25px; }
@@ -236,5 +252,28 @@ ul.nav {
   list-style-type: none;
   padding-left: 0;
   margin-left: 0; }
+
+/* Workout detail */
+.detail.blocks {
+  padding: 30px;
+  flex-wrap: wrap;
+  padding-bottom: 125px; }
+
+ul.block {
+  padding-left: 0;
+  list-style-type: none; }
+
+.small.icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  fill: var(--primary); }
+
+.block p {
+  display: inline; }
+
+.block li {
+  display: flex;
+  justify-content: space-between; }
 
 /*# sourceMappingURL=style.css.map */

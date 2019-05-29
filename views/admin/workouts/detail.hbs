@@ -1,0 +1,77 @@
+
+
+{{#with workout}}
+<div class="container pt30">
+  <div class="col-md-12 d-flex">
+    <svg class="icon back" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-left"
+      class="svg-inline--fa fa-angle-left fa-w-8" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+      <path fill="currentColor"
+        d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z">
+      </path>
+    </svg>
+    {{!-- <h2>{{formatTime date}}</h2> --}}
+    <h2>{{formatTime date day="numeric" month="long" year="numeric" hour="numeric" minute="numeric"}}</h2>
+
+  </div>
+  <div class="col-md-12 d-flex">
+    <svg class="small icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-marker-alt" class="svg-inline--fa fa-map-marker-alt fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+      <path fill="#0f6f92" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path></svg>
+    <p>{{address.name}}</p>
+  </div>
+</div>
+<div id="map"></div>
+
+<section class="detail blocks d-flex">
+  {{#each phases}}
+    <article>
+      <h2>{{name}}</h2>
+      {{#if description}}
+       <p> {{description}}</p>
+      {{/if}}
+      {{#if blocks}}
+       {{#each blocks}}
+       <ul class="block">
+          <h3>{{orden}}-{{description}} --{{mode.qty}} {{mode.name}}</h3>
+            {{#each exercises}}
+            <li>
+                <p><span class="primary-text">{{data.name}}</span> {{params.qty}} {{params.measure}}</p>
+                <a href="/api/detail/{{id}}">
+                  <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="eye" class="svg-inline--fa fa-eye fa-w-18 small icon" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="#0f6f92" d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"></path></svg>
+                </a>
+                {{#if params.weight}}
+                <p>Carga: {{params.weight}}</p>
+              {{/if}}
+            
+            </li>
+            {{/each}}
+          </ul>
+          {{/each}}
+      {{/if}}
+    </article>
+  {{/each}}
+</section>
+</div>
+{{/with}}
+
+  <a class="save"  id="checkin">Dar clase</a>
+
+{{>footer}}
+
+
+{{!-- MAPBOX --}}
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.3.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet'
+  href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.3.0/mapbox-gl-geocoder.css' type='text/css' />
+{{!-- AXIOS --}}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+{{!-- Date format --}}
+
+
+{{!-- SCRIPT PERSONALIZADOS --}}
+<script>
+  const coordinates = {{{coordinates}}}
+  
+</script>
+<script type="text/javascript" src="../../../javascripts/apiHandler.js"></script>
+<script type="text/javascript" src="../../../javascripts/view-workout.js"></script>

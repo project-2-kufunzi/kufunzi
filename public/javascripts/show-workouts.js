@@ -45,7 +45,8 @@ const drawMarkers = map => {
           },
           properties: {
             title: workout.client,
-            description: `${date.toLocaleDateString('es-ES', options)} ${date.getHours()}:${date.getMinutes()}`
+            description: `${date.toLocaleDateString('es-ES', options)} ${date.getHours()}:${date.getMinutes()}`,
+            id: workout._id
           }
         })
       })
@@ -57,57 +58,19 @@ const drawMarkers = map => {
         const el = document.createElement('div');
         el.className = 'marker';
 
-
+        const markerHTML = `<a href="/workouts/${marker.properties.id}">
+                              <h3>${marker.properties.title } </h3>
+                              <p> ${marker.properties.description}</p>
+                            </a>`
         // make a marker for each feature and add to the map
         new mapboxgl.Marker(el)
           .setLngLat(marker.geometry.coordinates)
           .setPopup(new mapboxgl.Popup({
               offset: 25
             }) // add popups
-            .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+            .setHTML(markerHTML))
           .addTo(map);
       });
     })
     .catch(err => console.log(err))
 }
-
-//   map.on('load', () => {
-//     map.addLayer({
-//       "id": "points",
-//       "type": "symbol",
-//       "source": {
-//         "type": "geojson",
-//         "data": {
-//           "type": "FeatureCollection",
-//           "features": [{
-//             "type": "Feature",
-//             "geometry": {
-//               "type": "Point",
-//               "coordinates": [-77.03238901390978, 38.913188059745586]
-//             },
-//             "properties": {
-//               "title": "Mapbox DC",
-//               "icon": "monument"
-//             }
-//           }, {
-//             "type": "Feature",
-//             "geometry": {
-//               "type": "Point",
-//               "coordinates": [-122.414, 37.776]
-//             },
-//             "properties": {
-//               "title": "Mapbox SF",
-//               "icon": "harbor"
-//             }
-//           }]
-//         }
-//       },
-//       "layout": {
-//         "icon-image": "{icon}-15",
-//         "text-field": "{title}",
-//         "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-//         "text-offset": [0, 0.6],
-//         "text-anchor": "top"
-//       }
-//     });
-//   });

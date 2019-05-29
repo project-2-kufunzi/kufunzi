@@ -14,6 +14,7 @@ const MongoStore = require('connect-mongo')(session);
 const flash = require("connect-flash");
 
 
+var HandlebarsIntl = require('handlebars-intl');
 
 mongoose
   .connect('mongodb://localhost/kufunzi', {
@@ -50,6 +51,7 @@ app.use(require('node-sass-middleware')({
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+HandlebarsIntl.registerWith(hbs);
 
 hbs.registerPartials(__dirname + '/views/partials')
 app.use(express.static(path.join(__dirname, 'public')));

@@ -20,6 +20,14 @@ router.get('/api', (req, res, next) => {
     })
     .catch(err => console.log(err))
 });
+router.get('/api/:id', (req, res, next) => {
+  Workout.findById(req.params.id)
+    .then(workouts => {
+      res.json(workouts)
+    })
+    .catch(err => console.log(err))
+});
+
 
 
 /* Create new workout */
@@ -62,6 +70,20 @@ router.post('/', (req, res, next) => {
     })
 })
 
+
+router.get('/:id', (req, res) => {
+  Workout.findById(req.params.id)
+    .then(workout => {
+      console.log(workout)
+      res.render('admin/workouts/detail', {
+        workout,
+        coordinates: JSON.stringify(workout.address.location)
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
 
 router.delete('/:id', (req, res) => {
   Workout.findByIdAndDelete(req.params.id)

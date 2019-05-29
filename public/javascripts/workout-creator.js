@@ -182,13 +182,13 @@ const addExercise = (id, exerciseDiv, exercises) => {
       // const newElement = exerciseDiv.appendChild(document.createElement('li'))
       // newElement.innerText = detail.data.name
 
-      const newElement = exerciseDiv.appendChild(document.createElement('div'))
+      const newElement = exerciseDiv.appendChild(document.createElement('li'))
       newElement.innerHTML = `
         <p><strong>${detail.data.name}</strong></p>
           <label class="w40" for="type">Tipo </label>
             <select class="w40" name="type">
               <option value="Reps"> Reps</option>
-              <option value="Time"> Time</option>
+              <option value="Tiempo"> Time</option>
             </select>
             <label class="w40" for="measure">Unidad </label>
             <select class="w40" name="measure">
@@ -234,7 +234,6 @@ window.onload = () => {
     addBlock(e)
   }
 
-  let phases;
 
   workoutform.onsubmit = (e) => {
     e.preventDefault()
