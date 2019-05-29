@@ -1,5 +1,12 @@
 const api = new wgesAPI()
 let address
+
+const backButton = document.querySelector('.back')
+console.log(backButton)
+
+backButton.onclick = () => {
+  location.replace(document.referrer);
+}
 const initMap = () => {
   //console.log('entreo initmap')
   mapboxgl.accessToken = 'pk.eyJ1IjoiZ3J1YXN0ZW8iLCJhIjoiY2p3N2lpOXc2MW1lbDQ0cXJmOHRzOWdlMyJ9.-x-wZ4ZJ4Bq7u5dEyaahNg';
@@ -237,13 +244,13 @@ window.onload = () => {
 
   saveWorkout.onclick = () => {
     const workoutData = [...document.querySelectorAll('[workout="save"]')]
-    console.log(workoutData)
+    console.log('Workout data', workoutData)
 
 
     const workout = {
       date: workoutData[0].value,
       address,
-      cliente: workoutData[1].value,
+      client: workoutData[1].value,
       type: workoutData[2].value,
       phases: [{ //calentamiento
           name: workoutData[3].value,
@@ -262,7 +269,7 @@ window.onload = () => {
     }
     console.log(workout)
     axios.post('/workouts', workout)
-      .then(x => console.log(x)) //window.location.pathname = '/workouts'
+      .then(x => window.location.pathname = '/workouts')
       .catch(err => console.err(err))
 
   }

@@ -13,6 +13,13 @@ router.get('/', (req, res, next) => {
     .catch(err => console.log(err))
 });
 
+router.get('/api', (req, res, next) => {
+  Workout.find()
+    .then(workouts => {
+      res.json(workouts)
+    })
+    .catch(err => console.log(err))
+});
 
 
 /* Create new workout */
@@ -23,16 +30,32 @@ router.get('/new', (req, res, next) => {
 
 
 router.post('/', (req, res, next) => {
-  console.log(req.body)
-  const newWorkout = new Workout(req.workout)
+  console.log('body', req.body)
+  const {
+    date,
+    address,
+    client,
+    type,
+    phases
+  } = req.body
+
+  const newWorkout = new Workout({
+    date,
+    address,
+    client,
+    type,
+    phases
+  })
+  console.log('newworkout:', newWorkout)
+
   newWorkout.save()
-    .then(
-      workout => {
-        //res.json(workout)
-        res.redirect('/workouts')
-      }
-    )
+    .then(workout => {
+      console.log('entreo en guardar')
+      console.log('workout guardado', workout)
+      res.redirect('/workouts')
+    })
     .catch(err => {
+      console.log(err)
       res.render('admin/workouts/new', {
         errmsg: "There was an error, try again"
       })

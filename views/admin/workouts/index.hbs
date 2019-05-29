@@ -1,4 +1,4 @@
-{{#each workouts}}
+{{!-- {{#each workouts}}
 <li>
    <p> Fecha {{date}}</p> 
    <p> Dirección: {{address.name}}</p> 
@@ -12,6 +12,52 @@
      {{/each}}
   {{/each}}
 </li>
-{{/each}}
+{{/each}} --}}
 
-<div id="all-workouts-map"></div>
+<div class="menu">
+   <section>
+      <p class="menu-title"> Quiero añadir un ...</p>
+ <svg id="close" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2 2L18 18" stroke="white" stroke-width="4" stroke-linecap="round"/>
+<path d="M2 18L18 2" stroke="white" stroke-width="4" stroke-linecap="round"/>
+</svg>
+   </section>
+  
+
+   <ul>
+      <li>
+         <a href="/workouts/new">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="dumbbell" class="svg-inline--fa fa-dumbbell fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+               <path fill="white" d="M104 96H56c-13.3 0-24 10.7-24 24v104H8c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h24v104c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24zm528 128h-24V120c0-13.3-10.7-24-24-24h-48c-13.3 0-24 10.7-24 24v272c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24V288h24c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM456 32h-48c-13.3 0-24 10.7-24 24v168H256V56c0-13.3-10.7-24-24-24h-48c-13.3 0-24 10.7-24 24v400c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24V288h128v168c0 13.3 10.7 24 24 24h48c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24z">
+               </path>
+            </svg>
+            <p>Workouts</p>
+         </a>
+      </li>
+   </ul>
+</div>
+<div class="container pt30">
+   <ul class="nav">
+      <li> <h2>Bienvenida Pepa</h2></li>
+      <li>   
+         <a id="open-menu" href="#">
+            <svg class="icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" class="svg-inline--fa fa-plus fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
+            {{!-- <img class="icon" src="../../../images/plus.svg"> --}}
+         </a>
+      </li>
+   </ul>
+  
+
+</div>
+<div id="workouts"></div>
+
+    {{>footer}}
+{{!-- MAPBOX --}}
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.3.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.3.0/mapbox-gl-geocoder.css' type='text/css' />
+{{!-- AXIOS --}}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+{{!-- SCRIPT PERSONALIZADOS --}}
+<script type="text/javascript" src="../../../javascripts/menu.js"></script>
+<script type="text/javascript" src="../../../javascripts/show-workouts.js"></script>
+
