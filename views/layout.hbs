@@ -7,20 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
 
-  {{!-- <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<<<<<<< HEAD
-  --}} 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap-reboot.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap-grid.min.css" />
-  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,800|Montserrat:200,300,400,600,800&display=swap" rel="stylesheet">
-  
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
-=======
-  --}}
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap-reboot.min.css" />
   <link rel="stylesheet"
@@ -30,9 +17,17 @@
     rel="stylesheet">
 
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
->>>>>>> e1ace97f580b35b13cc9a009035377dbbf753afc
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
 
+  {{!-- estilos y scripts del calendario --}}
+
+  <link href='/javascripts/fullcalendar-4.1.0/packages/core/main.css' rel='stylesheet' />
+  <link href='/javascripts/fullcalendar-4.1.0/packages/daygrid/main.css' rel='stylesheet' />
+  {{!-- <script src='/javascripts/rrule/main.js'></script> --}}
+  <script src='/javascripts/fullcalendar-4.1.0/packages/core/main.js'></script>
+  <script src='/javascripts/fullcalendar-4.1.0/packages/rrule/main.js'></script>
+  <script src='/javascripts/fullcalendar-4.1.0/packages/daygrid/main.js'></script>
+  <script src='/javascripts/fullcalendar-4.1.0/packages/timegrid/main.js'></script>
 
 
   <link rel="stylesheet" href="/stylesheets/style.css" />
@@ -48,10 +43,9 @@
   </nav>
 
   {{{body}}}
-  
+
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/javascripts/script.js"></script>
 </body>
 
 </html>
