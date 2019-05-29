@@ -69,7 +69,8 @@ passport.use("local-signup", new LocalStrategy({ //cuando en el signup queramos 
       email,
       password: hashPass,
       name,
-      phone
+      phone,
+      adminId: '5ced14d67d2e21c326b05b1e'
     });
 
     newUser.save()

@@ -11,14 +11,18 @@ router.get('/', (req, res, next) => {
 });
 
 router.get("/profile", (req, res, next) => {
+  console.log(req.user.isAdmin)
+  console.log(req.user)
   if (req.user.isAdmin) {
     res.render('admin/profile', {
       user: req.user
     })
-  } else
-    res.render("trainer/profile", {
+  } else {
+    res.render('trainer/profile', {
       user: req.user
     })
+  }
+
 })
 
 router.get('/editProfile', (req, res) => {

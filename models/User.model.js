@@ -8,6 +8,7 @@ const userSchema = new Schema({
   phone: String,
   imgPath: String,
   imgName: String,
+  comments: String,
   role: {
     type: String,
     enum: ["trainer", "admin"],
@@ -21,6 +22,10 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User"
   }],
+  adminId: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
   isTrainer: Boolean,
   isAdmin: Boolean
 }, {

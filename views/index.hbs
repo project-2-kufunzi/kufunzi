@@ -1,9 +1,13 @@
-<h1>{{title}}</h1>
+<h2>{{title}}</h2>
 <p>Welcome to {{title}}</p>
-<br>
+
 {{#if user}}
 <p>Hola {{user.name}}!</p>
 <br>
-<br>
-<a href="/profile">Revisa tu perfil</a>
+{{#if user.isAdmin}}
+<a href="/showAllTrainers">Mis trainers</a>
+
+{{/if}}
+<br><br>
+<a href="/profile">Mi perfil</a>
 {{/if}}
