@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const exerciseSchema = require('../models/schema/exercise.schema')
 
 
 const workoutSchema = new Schema({
@@ -35,15 +34,31 @@ const workoutSchema = new Schema({
         qty: Number
       },
       exercises: [{
-        type: Schema.Types.ObjectId,
-        ref: "Exercise"
+        refId: {
+          type: Schema.Types.ObjectId,
+          ref: "Exercise",
+          autopopulate: true
+        },
+        params: {
+          name: {
+            type: String,
+            enum: ['Reps', 'Tiempo']
+          },
+          qty: Number,
+          measure: {
+            type: String,
+            enum: ['reps', 'segs', 'mins']
+          },
+          weight: Number
+        }
       }]
     }]
   }],
   client: String,
   trainerId: {
     type: Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
+    autopopulate: true
   }
 }, {
   timestamps: {
@@ -52,5 +67,5 @@ const workoutSchema = new Schema({
   }
 });
 
-
+workoutSchema.plugin(require('mongoose-autopopulate'));
 module.exports = mongoose.model('Workout', workoutSchema);

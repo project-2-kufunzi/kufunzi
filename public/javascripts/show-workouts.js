@@ -7,7 +7,7 @@ window.onload = () => {
     container: 'workouts',
     style: 'mapbox://styles/mapbox/streets-v11',
     center: [-3.7492199, 40.4636688],
-    zoom: 5
+    zoom: 2
   });
 
 

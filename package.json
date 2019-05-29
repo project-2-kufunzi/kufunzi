@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@material/select": "^2.2.0",
+    "axios": "^0.18.0",
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "cloudinary": "^1.14.0",
@@ -22,6 +23,7 @@
     "handlebars-intl": "^1.1.2",
     "hbs": "^4.0.1",
     "mongoose": "^5.2.10",
+    "mongoose-autopopulate": "^0.9.1",
     "morgan": "^1.9.0",
     "multer": "^1.4.1",
     "multer-storage-cloudinary": "^2.2.1",

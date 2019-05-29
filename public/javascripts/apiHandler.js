@@ -16,18 +16,8 @@ class wgesAPI {
   }
 
   getExerciseDetail(id) {
-    return this.api.get(`exerciseinfo/${id}`)
+    return axios.get(`/exercise/api/${id}`)
+
+    //return this.api.get(`exerciseinfo/${id}`)
   }
-
-  // createOneRegister(data) {
-
-  // }
-
-  // updateOneRegister(id) {
-
-  // }
-
-  // deleteOneRegister(id) {
-
-  // } 
 }

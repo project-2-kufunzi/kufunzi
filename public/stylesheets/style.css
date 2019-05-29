@@ -14,13 +14,17 @@ h2 {
   font-size: 23px;
   line-height: 23px; }
 
+li {
+  list-style-type: none; }
+
 .primary-text {
   color: var(--primary);
   font-weight: 500;
   font-size: 1.1em; }
 
 .d-flex {
-  display: flex; }
+  display: flex;
+  align-items: center; }
 
 a {
   color: black; }
@@ -282,5 +286,12 @@ ul.block {
 .block li {
   display: flex;
   justify-content: space-between; }
+
+/* Exercise detail */
+.equipment li {
+  padding: 0 10px; }
+
+.equipment .chip-button {
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

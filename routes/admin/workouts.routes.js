@@ -54,7 +54,8 @@ router.post('/', (req, res, next) => {
     address,
     client,
     type,
-    phases
+    phases,
+    trainerId: req.user._id
   })
   console.log('newworkout:', newWorkout)
 

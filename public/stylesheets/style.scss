@@ -17,6 +17,10 @@ h2 {
   line-height: 23px;
 }
 
+li {
+  list-style-type: none;
+}
+
 .primary-text {
   color: var(--primary);
   font-weight: 500;
@@ -25,6 +29,7 @@ h2 {
 
 .d-flex {
   display: flex;
+  align-items: center;
 }
 
 a {
@@ -337,4 +342,15 @@ ul.block {
 .block li {
   display: flex;
   justify-content: space-between
+}
+
+/* Exercise detail */
+
+.equipment li {
+  padding: 0 10px;
+
+}
+
+.equipment .chip-button {
+  text-align: center;
 }

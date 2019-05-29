@@ -2,7 +2,7 @@ const api = new wgesAPI()
 let address
 
 const backButton = document.querySelector('.back')
-console.log(backButton)
+
 
 backButton.onclick = () => {
   location.replace(document.referrer);
@@ -46,11 +46,6 @@ let addBlockButton = document.querySelector('#add-block')
 const saveWorkout = document.querySelector('#add-workout')
 
 const blocks = []
-
-const getPhases = () => {
-  const phasesDiv = document.querySelector('.phases').children
-  console.log('Phases', phasesDiv)
-}
 
 const addBlock = (e) => {
   //console.log(e.target)
@@ -175,16 +170,13 @@ const saveBlock = (exercises, section) => {
 
 const addExercise = (id, exerciseDiv, exercises) => {
 
-  //buscar primero en nuestra bbdd, si no, llamar a la api.
   api.getExerciseDetail(id)
-    .then(detail => {
-      console.log(exercises)
-      // const newElement = exerciseDiv.appendChild(document.createElement('li'))
-      // newElement.innerText = detail.data.name
+    .then(result => { // devuelvo el id y el nombre
+      console.log('Result', result)
 
-      const newElement = exerciseDiv.appendChild(document.createElement('li'))
+      const newElement = exerciseDiv.appendChild(document.createElement('div'))
       newElement.innerHTML = `
-        <p><strong>${detail.data.name}</strong></p>
+        <p><strong>${result.data.name}</strong></p>
           <label class="w40" for="type">Tipo </label>
             <select class="w40" name="type">
               <option value="Reps"> Reps</option>
@@ -206,8 +198,7 @@ const addExercise = (id, exerciseDiv, exercises) => {
       document.getElementsByName('save-exercise').forEach(exerc => {
         exerc.onclick = () => {
           const exercise = {
-            id,
-            data: detail.data,
+            refId: result.data.id,
             params: {
               name: selects[2].value,
               qty: document.getElementById('qty').value,
@@ -215,7 +206,7 @@ const addExercise = (id, exerciseDiv, exercises) => {
               weight: document.getElementById('weight').value
             }
           }
-          newElement.innerHTML = `<p class="added"><strong>${detail.data.name}</strong>  ${exercise.params.qty}  ${exercise.params.measure}</p>
+          newElement.innerHTML = `<p class="added"><strong>${result.data.name}</strong>  ${exercise.params.qty}  ${exercise.params.measure}</p>
           `
           //puedo saber el indice?
           exercises.push(exercise)
