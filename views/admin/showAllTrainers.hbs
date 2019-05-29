@@ -1,0 +1,16 @@
+<h2>Trainers</h2>
+
+<ul>
+  {{#each users}}
+  {{#unless isAdmin}}
+  <li>{{name}}
+    <a href="/{{_id}}/detail">Details</a>
+    <a href="/{{_id}}/delete">Delete</a></li>
+  {{/unless}}
+  {{/each}}
+
+</ul>
+<br>
+
+
+<a href="/">Go back</a>

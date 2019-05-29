@@ -1,0 +1,1 @@
+//Gabi me dice que hay que crear el modelo del comentário pero no estoy segura, una vez que siempre es el admin quien va a meter comentários en el perfil del usuario. Ahí, en el modelo del User, sí que le voy a añadir esa propiedad "Comment", que podría ser equivalente a las evaluaciones de los "clientes" de nuestro plan inicial.
