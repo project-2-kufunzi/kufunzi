@@ -240,7 +240,6 @@ window.onload = () => {
     e.preventDefault()
   }
 
-  console.log(address)
 
   saveWorkout.onclick = () => {
     const workoutData = [...document.querySelectorAll('[workout="save"]')]
