@@ -17,6 +17,17 @@
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />
 
+  {{!-- estilos y scripts del calendario --}}
+
+  <link href='/javascripts/fullcalendar-4.1.0/packages/core/main.css' rel='stylesheet' />
+  <link href='/javascripts/fullcalendar-4.1.0/packages/daygrid/main.css' rel='stylesheet' />
+  {{!-- <script src='/javascripts/rrule/main.js'></script> --}}
+  <script src='/javascripts/fullcalendar-4.1.0/packages/core/main.js'></script>
+  <script src='/javascripts/fullcalendar-4.1.0/packages/rrule/main.js'></script>
+  <script src='/javascripts/fullcalendar-4.1.0/packages/daygrid/main.js'></script>
+  <script src='/javascripts/fullcalendar-4.1.0/packages/timegrid/main.js'></script>
+
+
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
@@ -30,10 +41,9 @@
   </nav> --}}
 
   {{{body}}}
-  
+
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/javascripts/script.js"></script>
 </body>
 
 </html>

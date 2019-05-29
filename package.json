@@ -8,6 +8,10 @@
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@fullcalendar/core": "^4.1.0",
+    "@fullcalendar/daygrid": "^4.1.0",
+    "@fullcalendar/list": "^4.1.0",
+    "@fullcalendar/timegrid": "^4.1.0",
     "@material/select": "^2.2.0",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.0",
@@ -30,6 +34,7 @@
     "node-sass-middleware": "^0.11.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "rrule": "^2.6.0",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
