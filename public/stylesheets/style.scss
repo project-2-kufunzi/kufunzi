@@ -215,11 +215,19 @@ img {
 
 .menu ul {
   padding-top: 50px;
+  display: flex;
+  list-style: none;
+}
+
+.menu li {
+  border-bottom: 1px solid;
 }
 
 .menu a {
   color: white;
   text-decoration: none;
+  /* display: flex;
+  flex-wrap: wrap; */
   /* border-bottom: 1px solid white; */
 }
 

@@ -8,7 +8,8 @@ const Workout = require('../../models/Workout.model')
 router.get('/', (req, res, next) => {
   Workout.find()
     .then(workouts => res.render('admin/workouts/index', {
-      workouts
+      workouts,
+      user: req.user
     }))
     .catch(err => console.log(err))
 });
@@ -19,7 +20,8 @@ router.get('/api', (req, res, next) => {
       res.json(workouts)
     })
     .catch(err => console.log(err))
-});
+})
+
 router.get('/api/:id', (req, res, next) => {
   Workout.findById(req.params.id)
     .then(workouts => {

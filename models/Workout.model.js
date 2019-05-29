@@ -34,7 +34,10 @@ const workoutSchema = new Schema({
         },
         qty: Number
       },
-      exercises: [exerciseSchema]
+      exercises: [{
+        type: Schema.Types.ObjectId,
+        ref: "Exercise"
+      }]
     }]
   }],
   client: String,

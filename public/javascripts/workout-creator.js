@@ -206,6 +206,7 @@ const addExercise = (id, exerciseDiv, exercises) => {
       document.getElementsByName('save-exercise').forEach(exerc => {
         exerc.onclick = () => {
           const exercise = {
+            id,
             data: detail.data,
             params: {
               name: selects[2].value,

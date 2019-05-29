@@ -1,4 +1,8 @@
-const exerciseSchema = {
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+
+const exerciseSchema = new Schema({
   id: Number,
   data: {
     name: String,
@@ -34,6 +38,12 @@ const exerciseSchema = {
     },
     weight: Number
   }
-}
+}, {
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
+});
 
-module.exports = exerciseSchema
+
+module.exports = mongoose.model('Exercise', exerciseSchema);
