@@ -31,7 +31,8 @@ const workoutSchema = new Schema({
           type: String,
           enum: ['Rondas', 'Tiempo']
         },
-        qty: Number
+        qty: Number,
+        rest: String
       },
       exercises: [{
         refId: {

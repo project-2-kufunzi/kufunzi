@@ -50,7 +50,7 @@ const blocks = []
 const addBlock = (e) => {
   //console.log(e.target)
   e.target.classList = 'hide'
-  const block = `<a class="save chip-button" name="save-block">Guardar bloque</a> 
+  const block = `
                   <div class="col-md-6">
                     <label class="w40" for="order">Orden </label>
                     <input class="w40"  type="number" name="order" save="true">
@@ -62,6 +62,10 @@ const addBlock = (e) => {
                     <option value="Tiempo"> Tiempo</option>
                   </select>
                   <input type="Number" save="true" name="round-qty" placeholder="Cantidad">
+                  <div class="col-md-6">
+                    <label class="w40" for="order">Rest </label>
+                    <input class="w40"  type="text" name="rest" save="true">
+                  </div>
                 </div>
                   <div class="col-md-12">
                     <label for="order">Description </label>
@@ -76,7 +80,9 @@ const addBlock = (e) => {
                     <input class="search-exercise" type="search" name="search-exercise">
                     <div class="results"></div>
                     
-                  </article>`
+                  </article>
+                  <a class="save chip-button" name="save-block">Guardar bloque</a> `
+
 
   const newBlock = document.querySelector('.phases').children[2].appendChild(document.createElement('section'))
   newBlock.classList = 'block'
@@ -143,10 +149,11 @@ const saveBlock = (exercises, section) => {
 
   const block = {
     order: blockData[0].value,
-    description: blockData[3].value,
+    description: blockData[4].value,
     mode: {
       name: blockData[1].value,
-      qty: blockData[2].value
+      qty: blockData[2].value,
+      rest: blockData[3].value
     },
     exercises
   }

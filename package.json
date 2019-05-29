@@ -35,7 +35,8 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "rrule": "^2.6.0",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "vivus": "^0.4.4"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"

@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
+
 const Workout = require('../../models/Workout.model')
-
-
+const User = require('../../models/User.model')
 
 /* Get all workouts */
 router.get('/', (req, res, next) => {
-  Workout.find()
-    .then(workouts => res.render('admin/workouts/index', {
+  Workout.find({
+      trainerId: req.user._id
+    })
+    .then(workouts => res.render('trainer/workouts/index', {
       workouts,
       user: req.user
     }))
@@ -15,26 +17,28 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/api', (req, res, next) => {
-  Workout.find()
+  Workout.find({
+      trainerId: req.user._id
+    })
     .then(workouts => {
       res.json(workouts)
     })
     .catch(err => console.log(err))
 })
 
-router.get('/api/:id', (req, res, next) => {
-  Workout.findById(req.params.id)
-    .then(workouts => {
-      res.json(workouts)
-    })
-    .catch(err => console.log(err))
-});
+// router.get('/api/:id', (req, res, next) => {
+//   Workout.findById(req.params.id)
+//     .then(workouts => {
+//       res.json(workouts)
+//     })
+//     .catch(err => console.log(err))
+// });
 
 
 
-/* Create new workout */
+// /* Create new workout */
 router.get('/new', (req, res, next) => {
-  res.render('admin/workouts/new')
+  res.render('trainer/workouts/new')
 
 });
 
@@ -58,6 +62,7 @@ router.post('/', (req, res, next) => {
     trainerId: req.user._id
   })
   console.log('newworkout:', newWorkout)
+
 
   newWorkout.save()
     .then(workout => {
@@ -83,31 +88,31 @@ router.post('/', (req, res, next) => {
 })
 
 
-router.get('/:id', (req, res) => {
-  Workout.findById(req.params.id)
-    .then(workout => {
-      console.log(workout.address.location)
-      res.render('admin/workouts/detail', {
-        workout,
-        coordinates: JSON.stringify(workout.address.location)
-      })
-    })
-    .catch(err => {
-      console.log(err)
-    })
-})
+// router.get('/:id', (req, res) => {
+//   Workout.findById(req.params.id)
+//     .then(workout => {
+//       console.log(workout.address.location)
+//       res.render('admin/workouts/detail', {
+//         workout,
+//         coordinates: JSON.stringify(workout.address.location)
+//       })
+//     })
+//     .catch(err => {
+//       console.log(err)
+//     })
+// })
 
-router.delete('/:id', (req, res) => {
-  Workout.findByIdAndDelete(req.params.id)
-    .then(workout => {
-      console.log(workout)
-      res.redirect('/workouts')
-    })
-    .catch(err => {
-      console.log(err)
-      next(err)
-    })
-})
+// router.delete('/:id', (req, res) => {
+//   Workout.findByIdAndDelete(req.params.id)
+//     .then(workout => {
+//       console.log(workout)
+//       res.redirect('/workouts')
+//     })
+//     .catch(err => {
+//       console.log(err)
+//       next(err)
+//     })
+// })
 
 
 
