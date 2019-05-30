@@ -17,10 +17,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/api', (req, res, next) => {
+  console.log(req.user._id)
   Workout.find({
       trainerId: req.user._id
     })
     .then(workouts => {
+      console.log(workouts)
       res.json(workouts)
     })
     .catch(err => console.log(err))
@@ -70,7 +72,7 @@ router.post('/', (req, res, next) => {
       console.log('workout guardado', workout)
       return User.findByIdAndUpdate(req.user._id, {
         $push: {
-          workouts: req.user._id
+          workouts: req.workout._id
         }
       })
 

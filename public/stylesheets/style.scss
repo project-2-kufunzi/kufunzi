@@ -29,6 +29,13 @@ li {
   list-style-type: none;
 }
 
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  background-color: white
+}
+
 .primary-text {
   color: var(--primary);
   font-weight: 500;
@@ -274,7 +281,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 #workouts {
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   position: absolute;
 }
@@ -331,6 +338,65 @@ img {
 .menu section {
   display: flex;
   justify-content: space-between;
+}
+
+ul.selector {
+  justify-content: space-evenly;
+}
+
+.selector li.active {
+  border-bottom: 2px solid var(--primary);
+}
+
+#list.hide {
+  opacity: 0;
+  z-index: -10;
+  transition: all 0.5;
+}
+
+#list {
+  opacity: 1;
+  z-index: 10;
+  /* height: 100vh; */
+  position: absolute;
+  /* align-items: center; */
+  top: 145px;
+  padding: 0 30px;
+
+}
+
+#list .d-flex {
+  align-items: baseline;
+}
+
+#list .small-text {
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+
+#list .workout-partial {
+  width: 100%;
+  padding: 10px 3px;
+  box-shadow: 3px 2px 5px 3px #f3f0f0;
+  border-radius: 9px;
+  margin-bottom: 10px;
+}
+
+#list header {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+#list header p {
+  padding-left: 20px;
+}
+
+#list header span {
+  color: grey;
+  font-size: 0.9em;
+
 }
 
 .marker {
@@ -439,4 +505,6 @@ ul.block {
 
 .equipment .chip-button {
   text-align: center;
+  width: auto;
+  height: auto;
 }

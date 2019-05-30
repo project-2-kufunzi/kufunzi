@@ -249,25 +249,26 @@ window.onload = () => {
       address,
       client: workoutData[1].value,
       type: workoutData[2].value,
+      duration: workoutData[3].value,
       phases: [{ //calentamiento
-          name: workoutData[3].value,
-          description: workoutData[4].value
+          name: workoutData[4].value,
+          description: workoutData[5].value
         },
         { //principal
-          name: workoutData[5].value,
+          name: workoutData[6].value,
           //description: workoutData[7].value,
           blocks
         },
         { //estiramients
-          name: workoutData[6].value,
-          description: workoutData[7].value
+          name: workoutData[7].value,
+          description: workoutData[8].value
         },
       ]
     }
-    console.log(workout)
-    axios.post('/workouts', workout)
+    console.log('Workout', workout)
+    /* axios.post('/workouts', workout)
       .then(x => window.location.pathname = '/workouts')
-      .catch(err => console.err(err))
+      .catch(err => console.err(err)) */
 
   }
 

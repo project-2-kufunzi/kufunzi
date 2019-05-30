@@ -13,16 +13,19 @@ const workoutSchema = new Schema({
       coordinates: [Number]
     }
   },
+  type: {
+    type: String,
+    enum: ['Presencial', 'Online']
+  },
+  duration: {
+    type: Number
+  },
   phases: [{
     name: {
       type: String,
       enum: ['Calentamiento', 'Principal', 'Estiramientos']
     },
     description: String,
-    type: {
-      type: String,
-      enum: ['Presencial', 'Online']
-    },
     blocks: [{
       order: Number,
       description: String,

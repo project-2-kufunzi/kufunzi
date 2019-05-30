@@ -6,6 +6,7 @@ const User = require('../../models/User.model')
 
 
 
+
 router.use('/workouts', require('./workouts.routes'));
 router.use('/exercise', require('./exercise.routes'))
 

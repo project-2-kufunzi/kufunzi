@@ -15,9 +15,10 @@ window.onload = () => {
   }
 
   trash.onclick = () => {
-
+    console.log(`/workouts/${id}`)
     axios.delete(`/workouts/${id}`)
       .then(x => window.location = "/workouts")
+      .catch(err => console.log(err))
   }
   mapboxgl.accessToken = 'pk.eyJ1IjoiZ3J1YXN0ZW8iLCJhIjoiY2p3N2lpOXc2MW1lbDQ0cXJmOHRzOWdlMyJ9.-x-wZ4ZJ4Bq7u5dEyaahNg'
 

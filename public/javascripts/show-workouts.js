@@ -1,5 +1,25 @@
 let map
+
 window.onload = () => {
+  const mapViewButton = document.querySelector('#map-view')
+  const listViewButton = document.querySelector('#list-view')
+  const workoutsMap = document.querySelector('#workouts')
+  const workoutsList = document.querySelector('#list')
+
+  mapViewButton.onclick = () => {
+    listViewButton.classList.remove('active')
+    mapViewButton.classList = 'active'
+    workoutsMap.classList.remove('hide')
+    workoutsList.classList = 'hide'
+
+  }
+  listViewButton.onclick = () => {
+    mapViewButton.classList.remove('active')
+    listViewButton.classList = 'active'
+    workoutsList.classList.remove('hide')
+    workoutsMap.classList = 'hide'
+    //workoutsList.classList.toggle('hide')
+  }
   //console.log('entreo initmap')
   mapboxgl.accessToken = 'pk.eyJ1IjoiZ3J1YXN0ZW8iLCJhIjoiY2p3N2lpOXc2MW1lbDQ0cXJmOHRzOWdlMyJ9.-x-wZ4ZJ4Bq7u5dEyaahNg';
 
