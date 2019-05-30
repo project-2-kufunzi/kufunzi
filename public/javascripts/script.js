@@ -28,7 +28,7 @@ window.onload = () => {
       right: 'dayGridMonth,timeGridWeek,timeGridDay'
     },
     events: {
-      url: '/workouts/api',
+      url: '/workouts/calendar',
       method: 'GET',
       // extraParams: {
       //   custom_param1: 'something',
