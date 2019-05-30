@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
 
 const Workout = require('../../models/Workout.model')
 const User = require('../../models/User.model')
@@ -29,6 +30,29 @@ router.get('/api', (req, res, next) => {
     .catch(err => console.log(err))
 })
 
+
+router.get('/calendar', (req, res, next) => {
+
+  Workout.find({
+      trainerId: req.user._id
+    })
+    .then(workouts => {
+      const events = []
+      let end, data
+      workouts.forEach(workout => {
+        end = moment(workout.date).add(workout.duration, 'm').toDate()
+        data = {
+          title: `${workout.client} (${workout.address.name})`,
+          start: workout.date,
+          end,
+        }
+        events.push(data)
+      })
+
+      res.json(events)
+    })
+    .catch(err => console.log(err))
+})
 // router.get('/api/:id', (req, res, next) => {
 //   Workout.findById(req.params.id)
 //     .then(workouts => {
@@ -64,7 +88,8 @@ router.post('/', (req, res, next) => {
     client,
     type,
     phases,
-    trainerId: req.user._id
+    trainerId: req.user._id,
+
   })
 
   console.log('newworkout:', newWorkout)

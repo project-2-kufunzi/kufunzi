@@ -1,29 +1,19 @@
-// document.addEventListener('DOMContentLoaded', () => {
-
-//   console.log('IronGenerator JS imported successfully!');
-
-// }, false);
-
-// import {
-//   Calendar
-// } from '@fullcalendar/core';
-// import dayGridPlugin from '@fullcalendar/daygrid';
-window.onload = function () {
+window.onload = () => {
   console.log('entroa crear calendarrrrr')
   // document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
-  console.log(calendar)
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    plugins: ['dayGrid', 'timegrid', 'list', 'timeline', 'rrule'],
-    defaultView: 'dayGridWeek',
-    defaultDate: '2019-05-07',
-    header: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    },
-  });
 
+  var calendar = new Calendar(calendarEl, {
+    timeZone: 'UTC',
+    events: [{
+      id: 'a',
+      title: 'my event',
+      start: '2018-09-01'
+    }]
+  })
+  console.log(calendar)
   calendar.render();
   // });
 }
+
+//dayGridMonth --> options

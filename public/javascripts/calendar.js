@@ -1,11 +1,4 @@
-
-
-<div id="calendar"></div>
-
-
-<a href="/profile">Mi perfil</a>
-<script>
-  window.onload = () => {
+window.onload = () => {
   console.log('entroa crear calendarrrrr')
   // document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
@@ -21,8 +14,4 @@
   console.log(calendar)
   calendar.render();
   // });
-}</script>
-
-
-{{>footer}}
-
+}

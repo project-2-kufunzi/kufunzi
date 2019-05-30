@@ -30,7 +30,8 @@ const userSchema = new Schema({
     autopopulate: true
   },
   isTrainer: Boolean,
-  isAdmin: Boolean
+  isAdmin: Boolean,
+  firstLogin: Boolean
 }, {
   timestamps: {
     createdAt: 'created_at',
