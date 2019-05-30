@@ -2,7 +2,7 @@ window.onload = () => {
   console.log('entroa crear calendarrrrr')
   // document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
-  console.log(calendar)
+
   const calendarDOM = new FullCalendar.Calendar(calendarEl, {
     plugins: ['interaction', 'dayGrid', 'timeGrid', 'list', 'rrule'],
     defaultView: 'timeGridWeek',
@@ -28,7 +28,7 @@ window.onload = () => {
       right: 'dayGridMonth,timeGridWeek,timeGridDay'
     },
     events: {
-      url: '/workouts/api',
+      url: '/workouts/calendar',
       method: 'GET',
       // extraParams: {
       //   custom_param1: 'something',
