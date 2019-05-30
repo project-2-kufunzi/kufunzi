@@ -50,6 +50,7 @@ router.post('/', (req, res, next) => {
   const {
     date,
     address,
+    duration,
     client,
     type,
     phases
@@ -58,11 +59,13 @@ router.post('/', (req, res, next) => {
   const newWorkout = new Workout({
     date,
     address,
+    duration,
     client,
     type,
     phases,
     trainerId: req.user._id
   })
+
   console.log('newworkout:', newWorkout)
 
 
@@ -90,31 +93,31 @@ router.post('/', (req, res, next) => {
 })
 
 
-// router.get('/:id', (req, res) => {
-//   Workout.findById(req.params.id)
-//     .then(workout => {
-//       console.log(workout.address.location)
-//       res.render('admin/workouts/detail', {
-//         workout,
-//         coordinates: JSON.stringify(workout.address.location)
-//       })
-//     })
-//     .catch(err => {
-//       console.log(err)
-//     })
-// })
+router.get('/:id', (req, res) => {
+  Workout.findById(req.params.id)
+    .then(workout => {
+      console.log(workout.address.location)
+      res.render('admin/workouts/detail', {
+        workout,
+        coordinates: JSON.stringify(workout.address.location)
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+})
 
-// router.delete('/:id', (req, res) => {
-//   Workout.findByIdAndDelete(req.params.id)
-//     .then(workout => {
-//       console.log(workout)
-//       res.redirect('/workouts')
-//     })
-//     .catch(err => {
-//       console.log(err)
-//       next(err)
-//     })
-// })
+router.delete('/:id', (req, res) => {
+  Workout.findByIdAndDelete(req.params.id)
+    .then(workout => {
+      console.log(workout)
+      res.redirect('/workouts')
+    })
+    .catch(err => {
+      console.log(err)
+      next(err)
+    })
+})
 
 
 

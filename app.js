@@ -110,11 +110,11 @@ app.use('/auth', authRoutes);
 
 
 
-/* const trainerRoutes = require('./routes/trainer/trainer.routes');
-app.use('/', checkRoles("trainer"), trainerRoutes); */
+const trainerRoutes = require('./routes/trainer/trainer.routes');
+app.use('/', checkRoles("trainer"), trainerRoutes);
 
-const adminRoutes = require('./routes/admin/admin.routes');
-app.use('/', checkRole("admin"), adminRoutes);
+/* const adminRoutes = require('./routes/admin/admin.routes');
+app.use('/', checkRole("admin"), adminRoutes); */
 
 
 

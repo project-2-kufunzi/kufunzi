@@ -9,13 +9,13 @@
 // } from '@fullcalendar/core';
 // import dayGridPlugin from '@fullcalendar/daygrid';
 window.onload = function () {
-
+  console.log('entroa crear calendarrrrr')
   // document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
   console.log(calendar)
   var calendar = new FullCalendar.Calendar(calendarEl, {
     plugins: ['dayGrid', 'timegrid', 'list', 'timeline', 'rrule'],
-    defaultView: 'dayGridMonth',
+    defaultView: 'dayGridWeek',
     defaultDate: '2019-05-07',
     header: {
       left: 'prev,next today',

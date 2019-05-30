@@ -6,7 +6,7 @@ window.onload = () => {
       start: 'autostart',
       type: 'delayed',
       duration: 300,
-      animTimingFunction: Vivus.EASE
+      animTimingFunction: Vivus.EASEs
     }, logo => {
       setTimeout(() => {
         logo.reset().play();

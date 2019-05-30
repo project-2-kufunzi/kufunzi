@@ -45,6 +45,7 @@ router.post('/', (req, res, next) => {
   const {
     date,
     address,
+    duration,
     client,
     type,
     phases
@@ -53,10 +54,11 @@ router.post('/', (req, res, next) => {
   const newWorkout = new Workout({
     date,
     address,
+    duration,
     client,
     type,
     phases,
-    trainerId: req.user._id
+    adminId: req.user._id
   })
   console.log('newworkout:', newWorkout)
 

@@ -1,7 +1,7 @@
 {{#with workout}}
 <input type="hidden" id="id" value="{{_id}}">
 <div class="container pt30">
-  <div class="col-md-12 d-flex justify-around">
+  <div class="col-md-12 d-flex justify-around baseline">
     <svg class="icon back" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-left"
       class="svg-inline--fa fa-angle-left fa-w-8" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
       <path fill="currentColor"
@@ -27,7 +27,7 @@
       </path>
     </svg>
   </div>
-  <div class="col-md-12 d-flex">
+  <div class="col-md-12 d-flex baseline">
     <svg class="small icon" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-marker-alt"
       class="svg-inline--fa fa-map-marker-alt fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 384 512">
@@ -37,7 +37,7 @@
     </svg>
     <p>{{address.name}}</p>
   </div>
-  <div class="col-md-12 d-flex">
+  <div class="col-md-12 d-flex baseline">
     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user"
       class="small icon svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512">
@@ -87,11 +87,12 @@
     {{/if}}
   </article>
   {{/each}}
+  <a class="save" id="checkin">Dar clase</a>
 </section>
 </div>
 {{/with}}
 
-<a class="save" id="checkin">Dar clase</a>
+
 
 
 

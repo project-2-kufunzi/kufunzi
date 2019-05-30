@@ -25,9 +25,12 @@ router.get('/', (req, res, next) => {
 
 router.get('/showAllTrainers', (req, res) => {
   User.find()
-    .then(users => res.render('admin/showAllTrainers', {
+    .then(users => {
+      res.status(200).json(users)
+      /* res.render('admin/showAllTrainers', {
       users,
-    }))
+      }) */
+    })
     .catch(err => console.log(err))
 })
 

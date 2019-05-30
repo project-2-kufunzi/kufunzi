@@ -161,6 +161,10 @@ const saveBlock = (exercises, section) => {
     console.log('Completa todos los campos')
     document.querySelector('#error').innerText = "Completa todos los campos"
     document.querySelector('#error').classList.toggle('reveal')
+    setTimeout(() => {
+      document.querySelector('#error').classList.toggle('reveal')
+      document.querySelector('#error').classList.add('hide')
+    }, 1500)
     return
   }
   blocks.push(block)
@@ -183,7 +187,7 @@ const addExercise = (id, exerciseDiv, exercises) => {
 
       const newElement = exerciseDiv.appendChild(document.createElement('div'))
       newElement.innerHTML = `
-        <p><strong>${result.data.name}</strong></p>
+        <p style="display:block;width=100%;"><strong>${result.data.name}</strong></p><br>
           <label class="w40" for="type">Tipo </label>
             <select class="w40" name="type">
               <option value="Reps"> Reps</option>
@@ -266,9 +270,9 @@ window.onload = () => {
       ]
     }
     console.log('Workout', workout)
-    /* axios.post('/workouts', workout)
+    axios.post('/workouts', workout)
       .then(x => window.location.pathname = '/workouts')
-      .catch(err => console.err(err)) */
+      .catch(err => console.err(err))
 
   }
 
