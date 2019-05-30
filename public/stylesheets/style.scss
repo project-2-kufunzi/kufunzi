@@ -1,5 +1,6 @@
 body {
   font: 14px 'Montserrat', 'Open Sans', Arial, sans-serif;
+  padding-bottom: 150px;
 }
 
 a,
@@ -261,10 +262,16 @@ input[type=number]::-webkit-inner-spin-button {
   background-color: red;
 }
 
-.exercises .added {
-  color: var(--secondary);
-  font-weight: 600;
-  list-style-type: none;
+.exercises {
+  a.chip-button {
+    margin-top: 20px;
+  }
+
+  .added {
+    color: var(--secondary);
+    font-weight: 600;
+    list-style-type: none;
+  }
 }
 
 .results {
@@ -306,10 +313,6 @@ input[type=number]::-webkit-inner-spin-button {
 /* .suggestions-wrapper a {
   color:
 } */
-img {
-  width: 200px;
-}
-
 .menu {
   padding: 30px;
   position: absolute;
@@ -410,12 +413,23 @@ ul.selector {
 
 }
 
-.profile span {
-  font-weight: 800;
-}
+.profile {
 
-.profile .d-flex {
-  justify-content: flex-end;
+  span {
+    font-weight: 800;
+  }
+
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+
+  .d-flex {
+    justify-content: space-between;
+    flex-direction: column;
+
+  }
 }
 
 .marker {
@@ -441,6 +455,7 @@ footer {
   width: 100%;
   position: fixed;
   bottom: 0;
+  z-index: 100;
 
   ul {
     display: flex;
@@ -529,14 +544,24 @@ ul.block {
   fill: var(--primary)
 }
 
-.block p {
-  display: inline;
+.block {
+  text-align: center;
+
+  p {
+    display: inline;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between
+  }
+
+  article {
+    padding-bottom: 30px;
+  }
 }
 
-.block li {
-  display: flex;
-  justify-content: space-between
-}
+
 
 /* Exercise detail */
 
@@ -603,4 +628,18 @@ section.trainers .header-trainers li {
   list-style-type: none;
   width: 40%;
   font-weight: 800;
+}
+
+.list {
+  opacity: 1;
+  width: 100%;
+  padding: 0 30px;
+
+  .workout-partial {
+    width: 100%;
+    padding: 10px 3px;
+    box-shadow: 3px 2px 5px 3px #f3f0f0;
+    border-radius: 9px;
+    margin-bottom: 10px;
+  }
 }

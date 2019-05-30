@@ -14,23 +14,9 @@ const MongoStore = require('connect-mongo')(session);
 const flash = require("connect-flash");
 //const checkRole = require('../../middlewares/middlewares')
 
-const checkRoles = (role) => (req, res, next) => req.user && req.user.role === role ? next() : res.render("index", {
-  msg: `Necesitas ser un ${role} para acceder aquí`
-})
+const checkRoles = (role) => (req, res, next) => req.user && req.user.role === role ? next() : next(null)
 
-const checkRole = role => {
-  console.log('entro en chekrole', role)
-  return (req, res, next) => {
-    if (req.isAuthenticated() && req.user.role === role) {
-      //console.log('coincide rol')
-      return next();
-    } else {
-      console.log('no eres')
-      res.redirect('/auth/login')
-    }
-  }
-}
-var HandlebarsIntl = require('handlebars-intl');
+const HandlebarsIntl = require('handlebars-intl');
 
 mongoose
   .connect('mongodb://localhost/kufunzi', {
@@ -109,13 +95,10 @@ const authRoutes = require('./routes/auth.routes');
 app.use('/auth', authRoutes);
 
 
-
 const trainerRoutes = require('./routes/trainer/trainer.routes');
 app.use('/', checkRoles("trainer"), trainerRoutes);
 
-/* const adminRoutes = require('./routes/admin/admin.routes');
-app.use('/', checkRole("admin"), adminRoutes); */
-
-
+const adminRoutes = require('./routes/admin/admin.routes');
+app.use('/', checkRoles("admin"), adminRoutes);
 
 module.exports = app;

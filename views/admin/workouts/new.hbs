@@ -1,78 +1,84 @@
 <div class="container">
   <header class="pt30 d-flex">
-  <svg class="icon back" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-left" class="svg-inline--fa fa-angle-left fa-w-8" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512"><path fill="currentColor" d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path></svg>
-<h2>Nuevo workout</h2>
+    <svg class="icon back" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-left"
+      class="svg-inline--fa fa-angle-left fa-w-8" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+      <path fill="currentColor"
+        d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z">
+      </path>
+    </svg>
+    <h2>Nuevo workout</h2>
 
   </header>
 
 
-<form class="workout" method="POST">
-  <h3>Información general</h3>
-  <div class="row">
-    <label for="date">Fecha y hora:</label>
-    <input class="" type="datetime-local" name="date" id="date" workout="save">
-  </div>
+  <form class="workout" method="POST">
+    <h3>Información general</h3>
+    <div class="row">
+      <label for="date">Fecha y hora:</label>
+      <input class="" type="datetime-local" name="date" id="date" workout="save" required>
+    </div>
 
-  <div class="col-md-12">
-    {{!-- <label for="address"><strong>Lugar del entrenamiento</strong></label>
+    <div class="col-md-12">
+      {{!-- <label for="address"><strong>Lugar del entrenamiento</strong></label>
     <input class="mdc-text-field__input" type="text" name="address" id="address" workout="save"> --}}
-  <div id='geocoder' class='geocoder'></div>
-  <div id='map'></div>
-  </div>
-  <div class="col-md-12">
-    <label for="client"><strong>Cliente:</strong></label>
-    <input class="mdc-text-field__input" type="text" name="client" id="client" workout="save">
-  </div>
-  <div class="col-md-12">
-    <label class="w40" for="type">Tipo </label>
-    <select name="type" workout="save">
-      <option value="Presencial"> Presencial</option>
-      <option value="Online"> Online</option>
-    </select>
-</div>
- <div class="col-md-12">
-    <label class="w40" for="druation">Duración (en minutos) </label>
-              <input class="w40" type="number"  id="duration" name="duration"  workout="save">
-  </div>
-  <div class="phases col-md-12 pt30">
-    <!-- Calentamiento -->
-    <h3>Fases del entrenamiento</h3>
-    <section class="warmup">
-      <label for="warmup">Calentamiento:</label>
-      <input type="hidden" name="phase-name" value="Calentamiento" workout="save">
-      <textarea class="mdc-text-field__input" type="text" name="warmup" workout="save"></textarea>
-    </section>
-    <!-- Principal -->
-    <section class="main">
-          <input type="hidden" name="phase-name" value="Principal" workout="save">
-          <p class="error" id="error"></p>
-          <label class="w40">Parte principal:</label>
-          <a class="chip-button w40"id="add-block">Añadir Bloque</a>
+      <div id='geocoder' class='geocoder'></div>
+      <div id='map'></div>
+    </div>
+    <div class="col-md-12">
+      <label for="client"><strong>Cliente:</strong></label>
+      <input class="mdc-text-field__input" type="text" name="client" id="client" workout="save" required>
+    </div>
+    <div class="col-md-12">
+      <label class="w40" for="type">Tipo </label>
+      <select name="type" workout="save">
+        <option value="Presencial"> Presencial</option>
+        <option value="Online"> Online</option>
+      </select>
+    </div>
+    <div class="col-md-12">
+      <label class="w40" for="druation">Duración (en minutos) </label>
+      <input class="w40" type="number" id="duration" name="duration" workout="save" required>
+    </div>
+    <div class="phases col-md-12 pt30">
+      <!-- Calentamiento -->
+      <h3>Fases del entrenamiento</h3>
+      <section class="warmup">
+        <label for="warmup">Calentamiento:</label>
+        <input type="hidden" name="phase-name" value="Calentamiento" workout="save">
+        <textarea class="mdc-text-field__input" type="text" name="warmup" workout="save"></textarea>
+      </section>
+      <!-- Principal -->
+      <section class="main">
+        <input type="hidden" name="phase-name" value="Principal" workout="save">
+        <p class="error" id="error"></p>
+        <label class="w40">Parte principal:</label>
+        <a class="chip-button w40" id="add-block">Añadir Bloque</a>
 
-      <!-- <section class="block">
+        <!-- <section class="block">
       </section> -->
 
-    </section>
-    <!-- Estiramientos -->
-    <section class="stretch">
-      <label for="stretch">Estiramientos:</label>
-      <input type="hidden" name="phase-name" value="Estiramientos" workout="save">
-      <textarea class="mdc-text-field__input" type="text" name="stretch" workout="save"></textarea>
-    </section>
-  </div>
+      </section>
+      <!-- Estiramientos -->
+      <section class="stretch">
+        <label for="stretch">Estiramientos:</label>
+        <input type="hidden" name="phase-name" value="Estiramientos" workout="save">
+        <textarea class="mdc-text-field__input" type="text" name="stretch" workout="save"></textarea>
+      </section>
+    </div>
 
-  <a class="save"  id="add-workout">Añadir</a>
-</form>
- </div>
+    <a class="save" id="add-workout">Añadir</a>
+  </form>
+</div>
 
 
 {{>footer}}
 
 {{!-- MAPBOX --}}
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.3.0/mapbox-gl-geocoder.min.js'></script>
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.3.0/mapbox-gl-geocoder.css' type='text/css' />
+<link rel='stylesheet'
+  href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.3.0/mapbox-gl-geocoder.css' type='text/css' />
 {{!-- AXIOS --}}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 {{!-- SCRIPT PERSONALIZADOS --}}
-<script type="text/javascript" src="../../../javascripts/apiHandler.js"></script>
-<script type="text/javascript" src="../../../javascripts/workout-creator.js"></script>
+<script type="text/javascript" src="../../../javascripts/workouts/apiHandler.js"></script>
+<script type="text/javascript" src="../../../javascripts/workouts/workout-creator.js"></script>

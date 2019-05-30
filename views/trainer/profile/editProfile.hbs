@@ -1,0 +1,22 @@
+{{#with user}}
+
+<section class="auth profile">
+
+  <form action="editProfile" method="post" enctype="multipart/form-data">
+<h4>Modificar mi perfil</h4>
+  <label for="name">Nombre:</label>
+  <input type="text" name="name" value="{{name}}">
+  
+  <label for="phone">Teléfono:</label>
+  <input type="text" name="phone" value="{{phone}}">
+  
+  <label for="photo">Sube tu foto de perfil:</label>
+  <input type="file" name="photo">
+
+
+  <button class="save" type="submit" id="edit">Guardar</button>
+
+</form>
+{{/with}}
+
+</section>

@@ -113,6 +113,55 @@ router.delete('/:id', (req, res) => {
 })
 
 
+router.get('/:id/edit', (req, res) => {
+  Workout.findById(req.params.id)
+    .then(workout => res.render('admin/workouts/edit', {
+      workout
+    }))
+    .catch(err => console.log(err))
+})
+
+// router.put('/:id', (req, res, next) => {
+//   console.log('body', req.body)
+//   const {
+//     date,
+//     address,
+//     duration,
+//     client,
+//     type
+//   } = req.body
+
+
+//   const update = {
+
+
+//   }
+
+//   Workout.findByIdAndUpdate(req.params.id, update)
+//     .then()
+//     .catch()
+//   newWorkout.save()
+//     .then(workout => {
+//       console.log('entreo en guardar')
+//       console.log('workout guardado', workout)
+//       return User.findByIdAndUpdate(req.user._id, {
+//         $push: {
+//           workouts: req.user._id
+//         }
+//       })
+
+//     })
+//     .then(user => {
+//       console.log(user.workouts)
+//       res.redirect('/workouts')
+//     })
+//     .catch(err => {
+//       console.log(err)
+//       res.render('admin/workouts/new', {
+//         errmsg: "There was an error, try again"
+//       })
+//     })
+// })
 
 
 

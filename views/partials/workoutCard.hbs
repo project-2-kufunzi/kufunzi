@@ -1,11 +1,14 @@
- <header>
+
+    <header>
       <h3> 
          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="9.9342" cy="10" r="8" fill="white" stroke="#3AB6E2" stroke-width="3" />
          </svg>
                {{client}}
+               <span >{{type}}</span>
          </h3>
-     <p>{{formatTime date day="numeric" month="long" year="numeric" hour="numeric" minute="numeric"}} </p>
+
+     <p>{{formatTime date day="numeric" month="long" year="numeric" hour="numeric" minute="numeric"}} ({{duration}}mins) </p>
 
      </header>
           <div class="col-md-12 d-flex">
@@ -19,3 +22,4 @@
     </svg>
     <p class="small-text">{{address.name}}</p>
   </div>
+  

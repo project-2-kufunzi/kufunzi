@@ -16,15 +16,18 @@ const userSchema = new Schema({
   },
   workouts: [{
     type: Schema.Types.ObjectId,
-    ref: "Workout"
+    ref: "Workout",
+    autopopulate: true
   }],
   trainers: [{
     type: Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
+    autopopulate: true
   }],
   adminId: {
     type: Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
+    autopopulate: true
   },
   isTrainer: Boolean,
   isAdmin: Boolean
@@ -35,5 +38,6 @@ const userSchema = new Schema({
   }
 });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+
+userSchema.plugin(require('mongoose-autopopulate'));
+module.exports = mongoose.model('User', userSchema);

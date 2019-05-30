@@ -8,16 +8,11 @@ class wgesAPI {
     })
   }
 
-  /*   getFullList() {
-
-    } */
   searchExercise(term) {
     return this.api.get(`exercise/search?term=${term}`)
   }
 
   getExerciseDetail(id) {
     return axios.get(`/exercise/api/${id}`)
-
-    //return this.api.get(`exerciseinfo/${id}`)
   }
 }

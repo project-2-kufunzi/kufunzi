@@ -5,26 +5,14 @@ const User = require('../../models/User.model')
 
 
 
-
-
 router.use('/workouts', require('./workouts.routes'));
 router.use('/exercise', require('./exercise.routes'))
 
 /* GET home page */
-router.get('/', (req, res, next) => {
-
-});
-
-/////////
-// const {
-//   ensureLoggedIn,
-//   ensureLoggedOut
-// } = require('connect-ensure-login')
-
-// const isLogged = req => req.user ? true : false
-
 router.get('/showAllTrainers', (req, res) => {
-  User.find()
+  User.find({
+      role: 'trainer'
+    })
     .then(users => {
       res.status(200).json(users)
       /* res.render('admin/showAllTrainers', {
@@ -35,26 +23,19 @@ router.get('/showAllTrainers', (req, res) => {
 })
 
 router.get('/:id/detail', (req, res) => {
+  console.log('detail en admin')
   User.findById(req.params.id)
-    .then(user => res.render('admin/showTrainerDetails', {
-      user,
-
+    .then(trainer => res.render('admin/trainer/details', {
+      trainer,
     }))
     .catch(err => console.log(err))
 })
-//PARA GUARDAR LOS COMENTÁRIOS ??? 
-//router.get('/:id/detail', (req, res) => {
-//   User.findById(req.params.id)
-//     .then(user => res.render('admin/showTrainerDetails', {
-//       user,
 
-//     }))
-//     .catch(err => console.log(err))
-// })
 
 router.get('/:id/delete', (req, res) => {
   User.findByIdAndDelete(req.params.id)
-    .then(x => res.redirect('/showAllTrainers'))
+    .then(x => res.redirect('/profile'))
+    .catch(err => console.log(err))
 })
 
 

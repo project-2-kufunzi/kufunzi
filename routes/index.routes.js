@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require('../models/User.model');
 const uploadCloud = require('../config/cloudinary.config');
 
+
+
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index', {
@@ -14,11 +16,11 @@ router.get("/profile", (req, res, next) => {
   console.log(req.user.isAdmin)
   console.log(req.user)
   if (req.user.isAdmin) {
-    res.render('admin/profile', {
+    res.render('admin/profile/profile', {
       user: req.user
     })
   } else {
-    res.render('trainer/profile', {
+    res.render('trainer/profile/profile', {
       user: req.user
     })
   }
@@ -27,9 +29,12 @@ router.get("/profile", (req, res, next) => {
 
 router.get('/editProfile', (req, res) => {
   //console.log(req.user)
+  /*   if(req.user.role==='trainer'){
+
+    } */
   User.findById(req.user._id)
     .then(user => {
-      res.render('editProfile', {
+      res.render('admin/profile/editProfile', { //hacer vista trainer
         user
       })
     })

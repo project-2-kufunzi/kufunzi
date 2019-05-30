@@ -5,6 +5,7 @@ const Workout = require('../../models/Workout.model')
 const User = require('../../models/User.model')
 
 /* Get all workouts */
+
 router.get('/', (req, res, next) => {
   Workout.find({
       trainerId: req.user._id
@@ -75,7 +76,7 @@ router.post('/', (req, res, next) => {
       console.log('workout guardado', workout)
       return User.findByIdAndUpdate(req.user._id, {
         $push: {
-          workouts: req.workout._id
+          workouts: workout._id
         }
       })
 

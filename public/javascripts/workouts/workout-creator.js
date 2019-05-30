@@ -51,7 +51,7 @@ const addBlock = (e) => {
   //console.log(e.target)
   e.target.classList = 'hide'
   const block = `
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <label class="w40" for="order">Orden </label>
                     <input class="w40"  type="number" name="order" save="true">
                   </div>
@@ -186,7 +186,7 @@ const addExercise = (id, exerciseDiv, exercises) => {
       console.log('Result', result)
 
       const newElement = exerciseDiv.appendChild(document.createElement('div'))
-      newElement.innerHTML = `
+      newElement.innerHTML = `<article>
         <p style="display:block;width=100%;"><strong>${result.data.name}</strong></p><br>
           <label class="w40" for="type">Tipo </label>
             <select class="w40" name="type">
@@ -202,7 +202,7 @@ const addExercise = (id, exerciseDiv, exercises) => {
             <label class="w40" for="qty">Número </label>
               <input class="w40" type="number"  id="qty" name="qty">
             <label class="w40" for="type">Carga </label>
-              <input class="w40" type="number" id="weight" placeholder="kg.">
+              <input class="w40" type="number" id="weight" placeholder="kg."></article>
             <a class="chip-button" name="save-exercise">Añadir</a> `
       selects = document.querySelectorAll('select')
 
