@@ -1,5 +1,5 @@
 window.onload = () => {
-  console.log('entroa crear calendarrrrr')
+  console.log('entro a crear calendarrrrr')
   // document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
 
@@ -40,6 +40,12 @@ window.onload = () => {
       color: '#3ab6e2', // a non-ajax option
       textColor: 'black' // a non-ajax option
     },
+    views: {
+      timeGridWeek: { // name of view
+        titleFormat: false
+        // other view-specific options here
+      }
+    }
 
   });
   console.log(calendarDOM)
