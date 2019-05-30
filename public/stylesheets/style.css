@@ -508,6 +508,7 @@ section.trainers .header-trainers li {
 
 #calendar {
   max-width: 900px;
-  margin: 40px auto; }
+  position: absolute;
+  top: 90px; }
 
 /*# sourceMappingURL=style.css.map */

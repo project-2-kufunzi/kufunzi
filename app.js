@@ -12,11 +12,11 @@ const path = require('path');
 const session = require("express-session");
 const MongoStore = require('connect-mongo')(session);
 const flash = require("connect-flash");
+const HandlebarsIntl = require('handlebars-intl');
 //const checkRole = require('../../middlewares/middlewares')
 
 const checkRoles = (role) => (req, res, next) => req.user && req.user.role === role ? next() : next(null)
 
-const HandlebarsIntl = require('handlebars-intl');
 
 mongoose
   .connect(process.env.DB, {
