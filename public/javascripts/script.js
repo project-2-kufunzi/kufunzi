@@ -22,11 +22,16 @@ window.onload = () => {
         alert('Clicked ' + eventObj.title);
       }
     },
+    titleFormat: {
+      year: 'numeric',
+      month: 'long'
+    },
     header: {
       left: 'prev,next today',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay'
     },
+
     events: {
       url: '/workouts/calendar',
       method: 'GET',
