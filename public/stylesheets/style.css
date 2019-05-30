@@ -495,6 +495,7 @@ section.trainers .header-trainers li {
   width: 40%;
   font-weight: 800; }
 
+<<<<<<< HEAD
 .list {
   opacity: 1;
   width: 100%;
@@ -505,5 +506,10 @@ section.trainers .header-trainers li {
     box-shadow: 3px 2px 5px 3px #f3f0f0;
     border-radius: 9px;
     margin-bottom: 10px; }
+=======
+#calendar {
+  max-width: 900px;
+  margin: 40px auto; }
+>>>>>>> d9a942d635284b8dbe4a43f6dd11a41f6f7fae24
 
 /*# sourceMappingURL=style.css.map */
