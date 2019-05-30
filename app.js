@@ -19,7 +19,7 @@ const checkRoles = (role) => (req, res, next) => req.user && req.user.role === r
 const HandlebarsIntl = require('handlebars-intl');
 
 mongoose
-  .connect('mongodb://localhost/kufunzi', {
+  .connect(process.env.DB, {
     useNewUrlParser: true
   })
   .then(x => {
