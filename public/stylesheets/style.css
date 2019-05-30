@@ -511,4 +511,17 @@ section.trainers .header-trainers li {
   position: absolute;
   top: 90px; }
 
+/* onobarding */
+section.onboarding {
+  display: flex;
+  /* flex-direction: column; */
+  height: 100vh;
+  width: 100vw;
+  align-items: center; }
+  section.onboarding .d-flex {
+    flex-direction: column;
+    text-align: center; }
+  section.onboarding svg {
+    height: 200px; }
+
 /*# sourceMappingURL=style.css.map */

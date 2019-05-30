@@ -23,6 +23,7 @@ mongoose
     useNewUrlParser: true
   })
   .then(x => {
+    console.log(process.env.DB)
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
   .catch(err => {

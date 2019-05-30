@@ -14,11 +14,13 @@ router.get('/', (req, res, next) => {
     return
   }
   res.render('auth/login')
-});
+})
+
+router.get('/onboarding', (req, res, next) => {
+  res.render('trainer/onboarding')
+})
 
 router.get("/profile", (req, res, next) => {
-  console.log(req.user.isAdmin)
-  console.log(req.user)
   if (req.user.isAdmin) {
     res.render('admin/profile/profile', {
       user: req.user

@@ -4,6 +4,7 @@ const User = require('../models/User.model');
 const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
+
 passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -29,7 +30,7 @@ passport.use(new LocalStrategy({
         }
 
         done(null, foundUser);
-        console.log('usuario logueado:', req.user)
+        //console.log('usuario logueado:', req.user)
       })
       .catch(err => done(err));
   }
@@ -74,9 +75,22 @@ passport.use("local-signup", new LocalStrategy({ //cuando en el signup queramos 
       firstLogin: false
     });
 
+    let userGuay = undefined;
     newUser.save()
       .then(user => {
-        done(null, user)
+        userGuay = user
+
+        const update = {
+          $push: {
+            trainers: user._id
+          }
+        }
+        User.findByIdAndUpdate(newUser.adminId, update)
+          .then(x => {
+            console.log(userGuay)
+            done(null, userGuay)
+          })
+
       })
       .catch(err => {
         done(err)
