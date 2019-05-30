@@ -7,9 +7,13 @@ const uploadCloud = require('../config/cloudinary.config');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-  res.render('index', {
-    user: req.user
-  });
+  if (req.user) {
+    res.render('index', {
+      user: req.user
+    });
+    return
+  }
+  res.render('auth/login')
 });
 
 router.get("/profile", (req, res, next) => {
