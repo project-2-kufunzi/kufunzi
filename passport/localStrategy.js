@@ -70,7 +70,7 @@ passport.use("local-signup", new LocalStrategy({ //cuando en el signup queramos 
       password: hashPass,
       name,
       phone,
-      adminId: '5ced14d67d2e21c326b05b1e',
+      adminId: '5ceffe38a45c84001727dfe6',
       firstLogin: false
     });
 
