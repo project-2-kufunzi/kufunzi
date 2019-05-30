@@ -2,7 +2,7 @@ window.onload = () => {
   console.log('entroa crear calendarrrrr')
   // document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
-  console.log(calendar)
+
   const calendarDOM = new FullCalendar.Calendar(calendarEl, {
     plugins: ['interaction', 'dayGrid', 'timeGrid', 'list', 'rrule'],
     defaultView: 'timeGridWeek',
