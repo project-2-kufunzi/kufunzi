@@ -53,8 +53,8 @@ router.post('/editProfile', uploadCloud.single('photo'), (req, res) => {
     phone
   } = req.body
 
-  console.log(req.body)
-  console.log(req.file)
+  // console.log(req.body)
+  // console.log(req.file)
   //SÍ clico en subir foto, que me añada eso al update
   if (req.file) {
     const imgPath = req.file.url
@@ -66,7 +66,7 @@ router.post('/editProfile', uploadCloud.single('photo'), (req, res) => {
         imgName
       })
       .then(user => {
-        console.log('-----------usuario actualizado', user)
+        // console.log('-----------usuario actualizado', user)
         res.redirect('/profile')
       }).catch(err => {
         next(err)

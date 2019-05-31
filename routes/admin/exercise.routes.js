@@ -31,7 +31,7 @@ router.get('/api/:id', (req, res) => {
         equipment
       } = response.data
 
-      console.log(response.data.name)
+      //console.log(response.data.name)
       const newExercise = new Exercise({
         id: req.params.id,
         data: {

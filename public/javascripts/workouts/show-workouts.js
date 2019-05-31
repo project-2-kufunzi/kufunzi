@@ -37,14 +37,14 @@ window.onload = () => {
 const drawMarkers = map => {
   axios.get('/workouts/api')
     .then(response => {
-      console.log('entro en get')
-      console.log(response)
+      // console.log('entro en get')
+      // console.log(response)
       const geojson = {
         type: 'FeatureCollection',
         features: []
       }
       if (!response.data) {
-        console.log('No hay workouts')
+        //console.log('No hay workouts')
         return
       }
       response.data.forEach(workout => {

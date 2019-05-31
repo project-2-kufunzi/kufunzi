@@ -35,28 +35,27 @@
 </footer>
 
 <script>
-  console.log(window)
   //window.onload=()=>{
   const iconsLi = document.querySelectorAll('footer li a')
   const icons = document.querySelectorAll('footer svg path')
 
   //console.log(window.location.pathname.includes('/workouts'))
   if (window.location.pathname.includes('/workouts')){
-    console.log(icons)
+   // console.log(icons)
     icons[0].attributes[0].nodeValue='#0f6f92'
     iconsLi[0].style.color='#0f6f92'
     iconsLi[0].style.fontWeight='800'
   }
   else  if (window.location.pathname.includes('/profile')){
-    console.log(icons)
+    //console.log(icons)
     icons[3].attributes[0].nodeValue='#0f6f92'
     iconsLi[2].style.color='#0f6f92'
     iconsLi[2].style.fontWeight='800'
   }
  else  if (window.location.pathname.includes('/')){
     icons[1].attributes[1].value= 'fill:#0f6f92'
-  icons[2].style.fill = '#0f6f92'
-  iconsLi[1].style.color='#0f6f92'
+    icons[2].style.fill = '#0f6f92'
+    iconsLi[1].style.color='#0f6f92'
     iconsLi[1].style.fontWeight='800'
   }
   /*iconsLi[0].onclick= () =>{

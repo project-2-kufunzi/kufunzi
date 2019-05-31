@@ -1,5 +1,5 @@
 window.onload = () => {
-  console.log('entro a crear calendarrrrr')
+
   // document.addEventListener('DOMContentLoaded', function () {
   var calendarEl = document.getElementById('calendar');
 
