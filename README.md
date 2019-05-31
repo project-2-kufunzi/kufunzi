@@ -49,8 +49,9 @@ Kufunzi it's an app that allows personal trainers to manage their calendar, crea
 |/workouts|	POST|	Create new workout
 |/workouts/:id|	GET|	Show workout details
 |/workouts/:id|	DELETE|	Delete workout
-|/workouts/api|	GET|	Workouts as Json
-|/workouts/api/:id|	GET|	Workout details as Json
+|/workouts/api|	GET|	Workouts  (JSON)
+|/workouts/api/:id|	GET|	Workout details (JSON)
+|/workouts/calendar|	GET|	Workout details for FullCalendar (JSON)
 |/profile|	GET |	Show profile details
 |/editProfile|	GET|	Profile edit form
 |/exercises/api/:id	|GET|Find exercise in database and if is new get it from WGER API and save it to DB"
