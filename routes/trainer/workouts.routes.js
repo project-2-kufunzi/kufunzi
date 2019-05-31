@@ -45,6 +45,7 @@ router.get('/calendar', (req, res, next) => {
           title: `${workout.client} (${workout.address.name})`,
           start: workout.date,
           end,
+          url: `/workouts/${workout._id}`
         }
         events.push(data)
       })
