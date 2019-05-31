@@ -23,7 +23,7 @@ router.get('/showAllTrainers', (req, res) => {
 })
 
 router.get('/:id/detail', (req, res) => {
-  console.log('detail en admin')
+  //console.log('detail en admin')
   User.findById(req.params.id)
     .then(trainer => res.render('admin/trainer/details', {
       trainer,

@@ -11,7 +11,7 @@ window.onload = () => {
       start: '2018-09-01'
     }]
   })
-  console.log(calendar)
+  //console.log(calendar)
   calendar.render();
   // });
 }

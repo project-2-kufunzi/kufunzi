@@ -199,7 +199,7 @@ const workouts = [{
 
 Workout.create(workouts)
   .then(workouts => {
-    console.log(`Created ${workouts.length} workouts`)
+    //console.log(`Created ${workouts.length} workouts`)
     mongoose.connection.close()
   })
   .catch(err => console.log(err))

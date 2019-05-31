@@ -12,7 +12,7 @@ const checkRoles = (role) => (req, res, next) => req.user && req.user.role === r
 router.use(checkRoles('trainer'))
 
 router.get('/:id/detail', (req, res) => {
-  console.log('soy admin y estoy entrando en trainer')
+  //console.log('soy admin y estoy entrando en trainer')
   User.findById(req.params.id)
     .then(trainer => res.render('admin/trainers/details', {
       trainer,

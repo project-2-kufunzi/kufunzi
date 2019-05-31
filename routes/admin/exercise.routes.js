@@ -72,18 +72,18 @@ router.get('/:id', (req, res) => {
 })
 
 
-router.get('/:id/workouts', (req, res) => {
-  Workout.findById(req.params.id)
-    .then(exercise => {
-      console.log(exercise)
-      res.render('admin/exercises/detail', {
-        exercise
-      })
-    })
-    .catch(err => {
-      console.log(err)
-    })
-})
+// router.get('/:id/workouts', (req, res) => {
+//   Workout.findById(req.params.id)
+//     .then(exercise => {
+//       console.log(exercise)
+//       res.render('admin/exercises/detail', {
+//         exercise
+//       })
+//     })
+//     .catch(err => {
+//       console.log(err)
+//     })
+// })
 
 
 

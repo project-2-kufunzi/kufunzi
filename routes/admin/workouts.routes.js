@@ -113,13 +113,13 @@ router.delete('/:id', (req, res) => {
 })
 
 
-router.get('/:id/edit', (req, res) => {
-  Workout.findById(req.params.id)
-    .then(workout => res.render('admin/workouts/edit', {
-      workout
-    }))
-    .catch(err => console.log(err))
-})
+// router.get('/:id/edit', (req, res) => {
+//   Workout.findById(req.params.id)
+//     .then(workout => res.render('admin/workouts/edit', {
+//       workout
+//     }))
+//     .catch(err => console.log(err))
+// })
 
 // router.put('/:id', (req, res, next) => {
 //   console.log('body', req.body)
