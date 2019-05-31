@@ -1,5 +1,5 @@
 window.onload = () => {
-  const edit = document.querySelector('[data-icon=edit]')
+  //const edit = document.querySelector('[data-icon=edit]')
   const trash = document.querySelector('[data-icon=trash-alt]')
   const id = document.querySelector('#id').value
   const backButton = document.querySelector('.back')
@@ -9,13 +9,10 @@ window.onload = () => {
     window.location = "/workouts"
   }
 
-  edit.onclick = () => {
-    console.log(id)
-    //axios.put('/workouts/{id}')
-  }
+
 
   trash.onclick = () => {
-    console.log(`/workouts/${id}`)
+    //console.log(`/workouts/${id}`)
     axios.delete(`/workouts/${id}`)
       .then(x => window.location = "/workouts")
       .catch(err => console.log(err))
@@ -34,7 +31,7 @@ window.onload = () => {
 }
 
 const drawMarker = map => {
-  console.log(coordinates)
+  //console.log(coordinates)
 
   const geojson = {
     type: 'FeatureCollection',
