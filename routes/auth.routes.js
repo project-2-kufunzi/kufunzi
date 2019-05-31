@@ -47,7 +47,7 @@ router.post("/signup", (req, res, next) => {
         next(err)
         return
       } else {
-        res.redirect("/") //sesion iniciada
+        res.redirect("/onboarding") //sesion iniciada
       }
     })
   })(req, res, next) //porque authenticate devuelve una funcion que tenemos que ejecutar

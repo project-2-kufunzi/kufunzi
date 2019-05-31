@@ -87,7 +87,7 @@ passport.use("local-signup", new LocalStrategy({ //cuando en el signup queramos 
         }
         User.findByIdAndUpdate(newUser.adminId, update)
           .then(x => {
-            console.log(userGuay)
+
             done(null, userGuay)
           })
 

@@ -9,12 +9,13 @@ window.onload = () => {
     locale: 'es',
     minTime: '06:00:00',
 
-    eventClick: function (info) {
-      var eventObj = info.event;
-      if (eventObj.url) {
-        window.open(eventObj.url);
-      }
-    },
+    /*   eventClick: function (info) {
+        var eventObj = info.event;
+        info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
+        if (eventObj.url) {
+          window.open(eventObj.url);
+        }
+      }, */
     titleFormat: {
       year: 'numeric',
       month: 'short'
@@ -88,7 +89,7 @@ window.onload = () => {
 
 //   window.open(eventObj.url);
 
-//   info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
+
 // } else {
 //   alert('Clicked ' + eventObj.title);
 // }
